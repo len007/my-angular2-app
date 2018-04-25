@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
+import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'my-app',
-  template: `<h1>Hello {{name}}</h1>`,
+  templateUrl: 'app/app.component.html',
+  providers: [
+    HomeComponent
+  ]
 })
 export class AppComponent  { name = '郑小丽'; }
