@@ -11,6 +11,8 @@
     "clean": "rimraf build"
   },
   "keywords": [],
+  "homePage": "",
+  "config": { "port" : "8080" },
   "author": "Len",
   "license": "MIT",
   "dependencies": {
