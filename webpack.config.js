@@ -55,17 +55,6 @@ module.exports = {
                 }],
             })
         }
-
       ]
-    },
-    plugins: [
-        new webpack.LoaderOptionsPlugin({
-            options: {
-                resolve: {
-                extensions: ['', '.ts', '.tsx']
-                }
-            }
-        })
-    ]
-    
+    }
   };
