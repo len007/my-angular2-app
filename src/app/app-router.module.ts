@@ -1,7 +1,6 @@
-import { Routes, RouterModule, Route } from '@angular/router'
-import { ModuleWithProviders } from '@angular/core';
+import { Routes } from '@angular/router';
 
-export const AppRouterModule: Routes =[
+export const AppRouterModule: Routes = [
     {
         path: '',
         loadChildren: 'app/home/home.module#HomeModule'
@@ -11,7 +10,7 @@ export const AppRouterModule: Routes =[
         loadChildren: 'app/list/list.module#ListModule'
     },
     {
-        path:'**',
+        path: '**',
         loadChildren: 'app/home/home.module#HomeModule'
     }
 ];
