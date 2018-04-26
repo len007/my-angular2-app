@@ -8,14 +8,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
     mode: "development",
     devtool: "inline-source-map",
-    entry: {
-        main: './src/main.ts',
-      },
+    entry: "./src/main.ts",
     output: {
         path: path.resolve(__dirname ,'build'),
-        filename: "[name].bundle.js",
-        chunkFilename: 'app/main/[name].module.js',
-        sourceMapFilename: 'app/main/[name].module.map'
+        filename: "[name].bundle.js"
     },
     devServer: {
         contentBase: path.join(__dirname, ""),
@@ -60,10 +56,5 @@ module.exports = {
             })
         }
       ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-          template: 'src/index.html'
-        })
-    ]
+    }
   };

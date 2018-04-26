@@ -1,16 +1,14 @@
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { MainComponent } from './main/main.component';
 
 export const AppRouterModule: Routes = [
     {
-        path: '',
-        loadChildren: 'app/home/home.module#HomeModule'
-    },
-    {
-        path: 'list',
-        loadChildren: 'app/list/list.module#ListModule'
+        path: 'len',
+        component: MainComponent,
     },
     {
         path: '**',
-        loadChildren: 'app/home/home.module#HomeModule'
+        component: MainComponent,
     }
 ];

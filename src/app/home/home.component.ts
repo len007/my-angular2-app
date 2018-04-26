@@ -2,8 +2,7 @@ import { Component }from '@angular/core';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'home.component.html',
-    styleUrls: ['home.component.css'],
+    template: `<p>这是Home页面</p>`,
     selector: 'home-label'
 })
 export class HomeComponent{ }
