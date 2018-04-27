@@ -3,6 +3,6 @@ import { Component } from '@angular/core';
 @Component({
     moduleId: module.id,
     selector: 'main-label',
-    templateUrl: './main.component.html',
+    template: `<router-outlet></router-outlet>`,
 })
 export class MainComponent { }
