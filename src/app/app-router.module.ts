@@ -1,5 +1,4 @@
-import { Routes, RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
 
 export const AppRouterModule: Routes = [
