@@ -5,4 +5,4 @@ import { Component }from '@angular/core';
     template: `<p>这是Home页面</p>`,
     selector: 'home-label'
 })
-export class HomeComponent{ }
+export class HomeComponent { }
