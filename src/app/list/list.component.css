@@ -1,0 +1,126 @@
+.search-bar {
+    margin: 20px auto;
+    width: 80%;
+    height: 100px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+.div-group {
+    float: left;
+    margin-right: 20px
+}
+
+.common-btn {
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    background-color: #31b0d5;
+    border: solid #31b0d5 1px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 4px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.fileinput-button {
+    position: relative;
+    overflow: hidden;
+}
+
+#fileChooseBtn {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px;
+    cursor: pointer;
+}
+
+#showFileName {
+    text-align: left;
+    border-radius: 5px;
+    width: 120px;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    padding: 6px 12px 6px 6px;
+    background-color: #eee;
+    min-height: 14px;
+    border-width: 0px !important;
+    margin: 0 8px 0 3px;
+}
+
+.pagination-box {
+    margin-top: 20px;
+    right: 20px;
+    font-size: 14px;
+    bottom: 20px;
+}
+
+.pagination-btn {
+    vertical-align: top;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border: 1px solid #eee;
+    background-color: #fff;
+    float: left;
+    min-height: auto;
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: #337ab7;
+    position: relative;
+    margin-right: 10px;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+.pagination-input {
+    width: 60px;
+    cursor: text;
+    margin-right: 2px;
+    text-align: right;
+}
+
+.pagination-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1)
+}
+
+.upload-btn-disabled {
+    cursor: not-allowed;
+    background-color: #eee;
+    border: 1px solid #eee;
+}
+
+.disabled {
+    color: #eee;
+    cursor: not-allowed;
+}
+
+.disabled:hover {
+    cursor: not-allowed;
+    background-color: #eee
+}
+
+.pagination-total {
+    padding: 6px 12px 6px 0px;
+    float: left;
+}
+
+.list-content {
+    margin: 0 auto;
+    width: 80%;
+    height: calc(100% - 270px);
+    background-color: rgb(245, 245, 245);
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.list-row-header {}
+
+.list-row {}
+
+.list-cell {}

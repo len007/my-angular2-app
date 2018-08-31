@@ -1,0 +1,41 @@
+<div class="search-bar">
+    <div class="div-group">
+        <form id="orgin" #orginForm method="POST" enctype="multipart/form-data" name="orginForm" class="formStyle">
+            <input type="" name="mark" value="1" style="display: none">
+            <span class="common-btn fileinput-button">
+                选择
+                <input type="file" name="file" id="fileChooseBtn" required="required" (change)="selectedFileOnChanged($event)" />
+            </span>
+            <input id="showFileName" type="text" readonly placeholder="未选择文件..." [value]="fileName">
+            <input type="button" value="上传" [disabled]="!fileName" id="submitOrgin" class="common-btn
+                " (click)="uploadFileAction()" [ngClass]="{ 'upload-btn-disabled':(!fileName)}">
+        </form>
+    </div>
+    <div class="div-group">
+        <input class="easyui-datebox" label="查询日期:" labelPosition="left" style="width:220px;">
+        <br/>
+    </div>
+    <div class="div-group">
+        <input type="button" value="查询" class="common-btn" (click)="searchForTime()">
+    </div>
+    <div class="div-group">
+        <input type="button" value="下载" class="common-btn" (click)="downloadData()">
+    </div>
+    <div class="clear-fix"></div>
+    <div class="div-group">
+            <a (click)="chagePageBefore()" class="pagination-btn" [ngClass]="{ 'disabled':(pages?.pageNo < 2)}">上一页</a>
+            <input [(ngModel)]="inputPageNo" type="input" (keyup.enter)="chagePages()" class="pagination-btn pagination-input">
+            <a class="icon-wrapper pagination-total" title="总页数">/&nbsp;{{pages?.maxPageNo}}</a>
+            <a (click)="chagePageNext()" class="pagination-btn" [ngClass]="{ 'disabled':(pages?.pageNo>=pages?.maxPageNo)}">下一页</a>
+    </div>
+</div>
+<div class="list-content">
+    <div class="list-row-header">
+        <span>姓名</span>
+        <span>年龄</span>
+    </div>
+    <div class="list-row" *ngFor="let item of items">
+        <span class="list-cell">{{item?.name}}</span>
+        <span class="list-cell">{{item?.age}}</span>
+    </div>
+</div>
