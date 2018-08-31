@@ -1,0 +1,40 @@
+.pagination-box{
+    position: absolute;
+    margin-top: 20px;
+    right: 20px;
+    font-size: 14px;
+    bottom: 20px;
+}
+
+.pagination-btn{
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 32px;
+    background-position-x: 4px;
+    background-position-y: 4px;
+    border-radius: 50%;
+}
+.pagination-btn:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2)
+}
+.first{
+    background-image: url('../../../assets/img/pagination/first.png');
+}
+.before{
+    background-image: url('../../../assets/img/pagination/before.png');
+}
+.next{
+    background-image: url('../../../assets/img/pagination/next.png');
+}
+.last{
+    background-image: url('../../../assets/img/pagination/last.png');
+}
+.disabled{
+    color: rgba(0, 0, 0, 0.1);
+    cursor: not-allowed;
+}
+.disabled:hover{
+    cursor: not-allowed;
+    background-color: rgba(0, 0, 0, 0)
+}

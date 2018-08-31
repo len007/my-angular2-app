@@ -1,0 +1,124 @@
+.add-content{
+    width: 100%;
+    min-height: 600px;
+    position: relative;
+}
+
+.add-menu{
+    width: 100%;
+    height: 40px;
+}
+.go-back-icon{
+    background-image: url(../../assets/img/back.png);
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-top: 4px;
+    background-position-x: 4px;
+    background-position-y: 4px;
+}
+
+.go-back-icon:hover{
+    background-color: rgba(0,0,0,.2);
+    cursor: pointer;
+}
+.edit-icon{
+    background-image: url(../../assets/img/edit.png);
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-top: 4px;
+    background-position-x: 4px;
+    background-position-y: 4px;
+}
+
+.edit-icon:hover{
+    background-color: rgba(0,0,0,.2);
+    cursor: pointer;
+}
+.form-control{
+    width: 100%;
+    height: 400px;
+    padding-top: 20px;
+    background-color: rgba(86, 195, 246, 0.5);
+    position: relative;
+    text-align: center;
+}
+
+.form-group{
+    margin: 0 0 20px 20px;
+    position: relative;
+}
+.form-input{
+    width: 180px;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    background-color: rgba(47, 183, 247, 0);
+    padding: 0 12px;
+    display: block;
+}
+.form-span{
+    display: block;
+    float: left;
+    font-size: 18px;
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+    width: 50px;
+}
+.form-span-options{
+    width: 80px;
+}
+.form-group-options{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.remove-option-icon{
+    background-image: url('../../assets/img/close.png');
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    right: 15px;
+    background-position-x: 4px;
+    background-position-y: 4px;
+}
+.remove-option-icon:hover{
+    cursor: pointer;
+    background-image: url('../../assets/img/close-hover.png');
+}
+
+.btn-success,.btn-cancel{
+    display: inline-block;
+    width: 5rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    border-radius: 1rem;
+    margin-top: 10px;
+    text-decoration: none;
+    background-color: rgba(86, 195, 246, 1);
+    cursor: pointer;
+    color: #fff;
+}
+
+.btn-success:hover,.btn-cancel:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+.form-div-box{
+    width:320px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}

@@ -1,0 +1,11 @@
+<div class="feature-box">
+    <p><b>Angular特性</b></p>
+    <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='animation'}" (click)="goAnimation()">动画</a>
+    <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='grid'}" (click)="goGrid()">CSS网格布局</a>
+    <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='partvar'}" (click)="goPartvar()">组件交互</a>
+    <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='detector'}" (click)="goDetector()">变化检测</a>
+    <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='pipe'}" (click)="goPipe()">管道</a>
+    <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='directive'}" (click)="goDirective()">指令</a>
+    <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='service'}" (click)="goService()">服务</a>
+</div>
+<router-outlet></router-outlet>

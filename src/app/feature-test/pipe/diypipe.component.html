@@ -1,0 +1,25 @@
+<div class="shared-content">
+    <p>管道，可以看作一个数据格式化展示的工具。</p>
+    <p>它可以将数据格式化显示而不改变源数据。引入CommonModule</p>
+
+    <p><strong>日期：</strong>{{datePipe | date: 'yyyy-MM-dd HH:mm:ss'}}</p>
+
+    <p><strong>转JSON：</strong>{{jsonPipe|json}}</p>
+
+    <p><strong>转大写：</strong>{{upperCasePipe|uppercase}}</p>
+
+    <p><strong>转小写：</strong>{{lowerCasePipe|lowercase}}</p>
+
+    <p><strong>数值位数：</strong>{{decimalPipe|number: '5.4-6'}}</p>
+
+    <p><strong>货币：</strong>{{currentcyPipe|currency}}</p>
+
+    <p><strong>百分数：</strong>{{percentPipe|percent: '3.5-9'}}</p>
+    
+    <p><strong>截取(字符串)：</strong>{{strSlice|slice: 2:6}}</p>
+    
+    <p><strong>截取(数组)：</strong>{{arrSlice|slice: 2:5}}</p>
+
+    <pre><p><strong>自定义管道：</strong>{{diyPipe|diyMyPipe:'male'|json}}</p></pre>
+    <p><span (click)="changeSex()" class="cursor-pointer">点我改变性别啊</span></p>
+</div>

@@ -1,0 +1,22 @@
+.feature-box{
+    width: 100px;
+    margin-top: 20px;
+    margin-right: 20px;
+    float: left;
+    background-color: #56c3f6;
+    padding: 10px
+}
+.feature-btn{
+    display: inline-block;
+    width: 100%;
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+}
+
+.feature-btn:hover, .current-menu{
+    cursor: pointer;
+    border-bottom: 3px solid #fff;
+    font-weight: bold;
+    height: 37px;
+}

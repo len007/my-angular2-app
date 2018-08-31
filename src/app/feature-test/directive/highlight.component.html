@@ -1,0 +1,16 @@
+<div class="shared-content">
+    <h3>指令一般分为三种，属性型指令，结构型指令，组件</h3>
+    <p><strong>属性指令如</strong>：[ngModel],[ngClass],[ngStyle]等，常用来改变DOM元素的外观和行为</p>
+    <p><strong>结构指令如</strong>：*ngIf,*ngFor,*ngSwitch等，常用来改变DOM的结构与布局</p>
+    <h3>Angular2内置了一些常用的指令，根据场景分为：通用指令；路由指令；表单指令</h3>
+    <p><strong>自定义指令</strong>实现鼠标移动高亮，自定义指令需要module的declarations中声明</p>
+    <p><strong>注意：</strong>Input传入Directive的参数都会是string类型</p>
+    <span highlight="{{hlColor|json}}" fontSize="20px"><strong>鼠标移上来试试</strong></span>
+    <p>
+        <span (click)="isShow=!isShow" class="cursor-pointer">点我</span>
+        <span *myUnless="isShow"><strong>我就是我！不一样的烟火！</strong></span>
+    </p>
+    <p><strong>表单指令</strong>：用户可以不用显式使用ngForm，Angular模板在编译解析时遇到form标签会自动创建NgForm指令并将其添加到该标签上</p>
+    <p><strong>隐式表单指令的例子</strong>可以查看【通讯录】-【新建联系人】的组件代码</p>
+    <p>绑定到input标签：<input type="text"[(ngModel)]="name"/></p>
+</div>
