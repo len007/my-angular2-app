@@ -1,5 +1,7 @@
+<!-- Angular特性 -->
 <div class="feature-box">
     <p><b>Angular特性</b></p>
+    <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='http_jsonp_httpclient'}" (click)="goHttp()">接口</a>
     <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='animation'}" (click)="goAnimation()">动画</a>
     <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='grid'}" (click)="goGrid()">CSS网格布局</a>
     <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='partvar'}" (click)="goPartvar()">组件交互</a>

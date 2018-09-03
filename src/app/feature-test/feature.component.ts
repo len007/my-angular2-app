@@ -41,4 +41,8 @@ export class FeatureComponent implements OnInit{
         this.currentMenu = 'service';
         this.router.navigate(['/len/feature/service']);
     }
+    goHttp(){
+        this.currentMenu = 'http_jsonp_httpclient';
+        this.router.navigate(['/len/feature/http_jsonp_httpclient']);
+    }
 }

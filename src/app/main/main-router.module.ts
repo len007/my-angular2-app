@@ -2,24 +2,24 @@ import { MainComponent } from './main.component';
 import { Routes } from '@angular/router';
 
 export const MainRouterModule: Routes = [{
-    path: '',
+    path: 'len',
     component: MainComponent,
     children: [{
         path: '',
         pathMatch: 'full',
-        redirectTo: 'len/list'
+        redirectTo: 'list'
     }, {
-        path: 'len/list',
+        path: 'list',
         loadChildren: '../list/list.module#ListModule',
     }, {
-        path: 'len/collection',
+        path: 'collection',
         loadChildren: '../collection/collection.module#CollectionModule',
     },
     {
-        path: 'len/detail/:id',
+        path: 'detail/:id',
         loadChildren: '../detail/detail.module#DetailModule'
     }, {
-        path: 'len/feature',
+        path: 'feature',
         loadChildren: '../feature-test/feature.module#FeatureModule',
     }, {
         path: '**',

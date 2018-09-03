@@ -13,8 +13,8 @@ import { ChildComponent } from '../child/child.component';
 export class ParentComponent {
     str: string = '';
     @ViewChild(ChildComponent)
-    childViewChild: ElementRef;   // 这种方式
-    // childViewChild: ChildComponent;  // 或者这种方式
+    // childViewChild: ElementRef;   // 这种方式
+    childViewChild: ChildComponent;  // 或者这种方式
 
     parentShow2(event) {
         this.str = event;

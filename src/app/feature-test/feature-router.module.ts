@@ -26,6 +26,9 @@ export const FeatureRouterModule: Routes = [
         }, {
             path: 'service',
             loadChildren: './service/mservice.module#MserviceService'
+        },{
+            path: 'http_jsonp_httpclient',
+            loadChildren: './http_jsonp_httpclient/index.module#indexModule'
         }, {
             path: '**', redirectTo: 'partvar'
         }]
