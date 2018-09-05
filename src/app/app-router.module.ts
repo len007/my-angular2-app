@@ -1,12 +1,20 @@
 import { Routes } from '@angular/router';
+import { AppComponent } from './app.component';
 
-export const AppRouterModule: Routes = [
-    {
-        path: 'len',
-        loadChildren: './main/main.module#MainModule',
-    },
-    {
-        path: '**',
-        redirectTo: 'len',
-    }
-];
+export const AppRouterModule: Routes = [{
+    path: 'list',
+    loadChildren: './list/list.module#ListModule',
+}, {
+    path: 'collection',
+    loadChildren: './collection/collection.module#CollectionModule',
+},
+{
+    path: 'detail/:id',
+    loadChildren: './detail/detail.module#DetailModule'
+}, {
+    path: 'feature',
+    loadChildren: './feature-test/feature.module#FeatureModule',
+}, {
+    path: '**',
+    redirectTo: 'feature'
+}];

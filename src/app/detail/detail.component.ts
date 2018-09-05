@@ -63,7 +63,7 @@ export class DetailComponent implements OnInit, OnChanges {
         })
     }
     goList(){
-        this.router.navigate(['/len/list']);
+        this.router.navigate(['/list']);
     }
     paramsValid(){
         if(this.contact.name && this.contact.telNum && this.contact.email){

@@ -1,0 +1,9 @@
+.html5-content{
+    float: left;
+    width: calc(100% - 140px);
+    margin-top: 20px;
+}
+.my-video{
+    width: 80%;
+    height: auto;
+}

@@ -8,7 +8,7 @@ export const FeatureRouterModule: Routes = [
         children: [{
             path: '', pathMatch:'full', redirectTo: 'partvar'
         }, {
-            path: 'grid', loadChildren: './grid/grid.module#GridModule'
+            path: 'html5', loadChildren: './html5/html5.module#Html5Module'
         }, {
             path: 'partvar', loadChildren: './partvar/parent/parent.module#ParentModule'
         }, {

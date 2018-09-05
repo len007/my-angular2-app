@@ -15,34 +15,34 @@ export class FeatureComponent implements OnInit{
     }
     goPartvar(){
         this.currentMenu = 'partvar';
-        this.router.navigate(['/len/feature/partvar']);
+        this.router.navigate(['/feature/partvar']);
     }
-    goGrid(){
-        this.currentMenu = 'grid';
-        this.router.navigate(['/len/feature/grid']);
+    goHtml5(){
+        this.currentMenu = 'html5';
+        this.router.navigate(['/feature/html5']);
     }
     goAnimation(){
         this.currentMenu = 'animation';
-        this.router.navigate(['/len/feature/animation']);
+        this.router.navigate(['/feature/animation']);
     }
     goDetector(){
         this.currentMenu = 'detector';
-        this.router.navigate(['/len/feature/detector']);
+        this.router.navigate(['/feature/detector']);
     }
     goPipe(){
         this.currentMenu = 'pipe';
-        this.router.navigate(['/len/feature/pipe']);
+        this.router.navigate(['/feature/pipe']);
     }
     goDirective(){
         this.currentMenu = 'directive';
-        this.router.navigate(['/len/feature/directive']);
+        this.router.navigate(['/feature/directive']);
     }
     goService(){
         this.currentMenu = 'service';
-        this.router.navigate(['/len/feature/service']);
+        this.router.navigate(['/feature/service']);
     }
     goHttp(){
         this.currentMenu = 'http_jsonp_httpclient';
-        this.router.navigate(['/len/feature/http_jsonp_httpclient']);
+        this.router.navigate(['/feature/http_jsonp_httpclient']);
     }
 }

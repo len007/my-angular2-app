@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
     current: string = 'list';
     constructor(private router: Router) { }
     ngOnInit() {
+        // 这里不能使用this.router.url来获取url，因为还没加载出来
         this.current = 'list';
         if(window.location.href.indexOf('list') > 0){
             this.current = 'list';
@@ -22,14 +23,14 @@ export class HeaderComponent implements OnInit {
     }
     goCollections() {
         this.current = 'collection';
-        this.router.navigate(['/len/collection']);
+        this.router.navigate(['/collection']);
     }
     goLists() {
         this.current = 'list';
-        this.router.navigate(['/len/list']);
+        this.router.navigate(['/list']);
     }
     goFeature() {
         this.current = 'feature';
-        this.router.navigate(['/len/feature']);
+        this.router.navigate(['/feature']);
     }
 }

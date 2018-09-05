@@ -1,11 +1,54 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
 .app-content {
-    width: 600px;
-    height: 900px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
+    width: 100%;
+    height: 100%;
+    background:url(../img/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-height: 700px;
+    min-width: 1200px;
+
+}
+.main-content{
+    width: calc(100% - 40px);
+    min-height: 620px;
+    position: relative;
+    margin: 0px 20px 20px 20px;
+    background-color: #eee;
+    border-radius: 10px;
+}
+.list-menu{
+    width: 60%;
+    height: 40px;
+    margin-left: 20%;
+}
+.my-table{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    position: relative;
+    text-align: center;
 }
 
+.my-table tr:first-child>td:first-child{
+    border-top: #000 dotted 1px;
+    border-left: #000 dotted 1px;
+}
+.my-table tr:first-child>td{
+    border-top: #000 dotted 1px;
+}
+tr>td:first-child{
+    border-left: #000 dotted 1px;
+}
+td{
+    border-bottom: #000 dotted 1px;
+    border-right: #000 dotted 1px;
+}
 .margin-top-10{
     margin-top: 10px;
 }

@@ -48,7 +48,7 @@ export class AddComponent implements OnInit {
     }
     
     goList() {
-        this.router.navigate(['/len/list']);
+        this.router.navigate(['/list']);
     }
     addOption(event) {
         if (event === 'birthday') {

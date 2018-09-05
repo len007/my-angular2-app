@@ -70,11 +70,11 @@ export class CollectionComponent implements OnInit {
     // 跳转至联系人详情页
     goDetail(id) {
         console.log(id)
-        this.router.navigate(['/len/detail', id]);
+        this.router.navigate(['/detail', id]);
     }
     // 跳转至添加页面
     goAdd() {
-        this.router.navigate(['/len/list/add']);
+        this.router.navigate(['/list/add']);
     }
     // 取消收藏
     uncollecting(id) {

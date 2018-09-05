@@ -14,7 +14,7 @@ export class ListComponent implements OnInit, OnChanges {
     contacts: Array<any>;
     pageParams: any = {
         pageNo: 1,
-        pageSize: 3,
+        pageSize: 13,
         total: 0,
     };
     constructor(private contactService: ContactService, private route: ActivatedRoute, private router: Router) { }
@@ -62,12 +62,12 @@ export class ListComponent implements OnInit, OnChanges {
 
     // 跳转至联系人详情页
     goDetail(id) {
-        this.router.navigate(['/len/detail', id]);
+        this.router.navigate(['/detail', id]);
     }
 
     // 跳转至添加页面
     goAdd() {
-        this.router.navigate(['/len/list/add']);
+        this.router.navigate(['/list/add']);
     }
 
     // 收藏/取消收藏

@@ -1,0 +1,26 @@
+<div class="html5-content">
+    <progress max="100" value="20">这是头部</progress>
+    <p><ruby><rt>注释内容</rt><rp>浏览器不支持时如何显示</rp></ruby></p>
+    发布日期<time datetime="2014-12-25T09:00">9：00</time>
+    <p>TML5新增的标签及使用 前端这块 百家号08-2810:59 小编利用闲暇时间进行收集<wbr>总结了HTML5的新特性,基本除了IE9以下都可以使用,在这里分享给大家供大家</p>
+    <dialog>dd</dialog>
+    <span><details>ddddddd</details></span>
+    <p><keygen>hah</keygen></p>
+    <nav><p>kkkkkkkkkkkkkkkkkkk</p></nav>
+    <aside>sddff</aside>
+    <article>iiiii<mark>BBB</mark>iiii</article>
+    <div style="text-align:center;">
+        <video id="myVideo" #myVideo [controls]="controls" [width]="videoWidth" 
+            style="margin-top:15px;" (contextmenu)="nomenu($event)">
+          <source src="data/html5-1.mp4" type="video/mp4" />
+          <source src="data/html5-1.mp4" type="video/ogg" />
+          您的浏览器不支持 HTML5 video.
+        </video>
+        <br /> 
+        <button (click)="playPause()">{{videoPaused?"播放":"暂停"}}</button> 
+        <button (click)="showCtr()">{{controls?"隐藏":"显示"}}控件</button>
+        <button (click)="makeBig()">大</button>
+        <button (click)="makeNormal()">中</button>
+        <button (click)="makeSmall()">小</button>
+      </div> 
+</div>

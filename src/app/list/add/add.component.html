@@ -1,55 +1,53 @@
-<div class="add-content">
-    <div class="add-menu fn-clear-float">
-        <a class="icon-wrapper pull-right margin-right-10" (click)="goList()" title="返回列表">
-            <span class="go-back-icon"></span>
-        </a>
+<div class="main-content">
+  <div class="list-menu fn-clear-float">
+    <a class="icon-wrapper pull-right margin-right-10" (click)="goList()" title="返回列表">
+      <span class="go-back-icon"></span>
+    </a>
+  </div>
+  <form class="form-control" (ngSubmit)="onSubmit()" role="form" #f="ngForm">
+    <div class="form-group">
+      <span class="form-span">姓名</span>
+      <input required class="form-input" name="name" type="text" [(ngModel)]="contact.name" placeholder="请输入姓名" />
+      <a class="icon-wrapper" title="必选">
+        <span class="required-tips"></span></a>
     </div>
-    <form class="form-control" (ngSubmit)="onSubmit()" role="form" #f="ngForm">
-        <div class="form-div-box">
-            <div class="form-group">
-                <span class="form-span">姓名</span>
-                <input required class="form-input" name="name" type="text" [(ngModel)]="contact.name" placeholder="请输入姓名" />
-                <a class="icon-wrapper" title="必选">
-                <span class="required-tips"></span></a>
-            </div>
-            <div class="form-group">
-                <span class="form-span">手机</span>
-                <input required class="form-input" name="telNum" type="text" [(ngModel)]="contact.telNum" placeholder="请输入手机号" />
-                <a class="icon-wrapper" title="必选">
-                <span class="required-tips"></span></a>
-            </div>
-            <div class="form-group">
-                <span class="form-span">邮箱</span>
-                <input required class="form-input" name="email" type="text" [(ngModel)]="contact.email" placeholder="请输入电子邮箱" />
-                <a class="icon-wrapper" title="必选">
-                <span class="required-tips"></span></a>
-            </div>
-            <div *ngIf="!moreOptions?.birthday[1]" class="form-group">
-                <span class="form-span">生日</span>
-                <input required class="form-input" name="birthday" type="text" [(ngModel)]="contact.birthday" placeholder="请输入生日" />
-                <a class="icon-wrapper" (click)="removeOption('birthday')" title="移除">
-                    <span class="remove-option-icon"></span>
-                </a>
-            </div>
-            <div *ngIf="!moreOptions?.address[1]" class="form-group">
-                <span class="form-span">地址</span>
-                <input required class="form-input" name="address" type="text" [(ngModel)]="contact.address" placeholder="请输入地址" />
-                <a class="icon-wrapper" (click)="removeOption('address')" title="移除">
-                    <span class="remove-option-icon"></span>
-                </a>
-            </div>
-            <div class="form-group">
-                <input class="btn-success margin-right-10" type="submit" value="确定" />
-                <input class="btn-cancel" type="button" value="取消" (click)="goList()" />
-            </div>
-            <div class="form-group-options">
-                <span class="form-span form-span-options">其他选项</span>
-                <select name='options' (ngModel)="addedOption" (ngModelChange)="addOption($event)">
-                    <option selected [value]="'default'">请选择</option>
-                    <option *ngIf="moreOptions?.birthday[1]" [value]="'birthday'">{{moreOptions?.birthday[0]}}</option>
-                    <option *ngIf="moreOptions?.address[1]" [value]="'address'">{{moreOptions?.address[0]}}</option>
-                </select>
-            </div>
-        </div>
-    </form>
+    <div class="form-group">
+      <span class="form-span">手机</span>
+      <input required class="form-input" name="telNum" type="text" [(ngModel)]="contact.telNum" placeholder="请输入手机号" />
+      <a class="icon-wrapper" title="必选">
+        <span class="required-tips"></span></a>
+    </div>
+    <div class="form-group">
+      <span class="form-span">邮箱</span>
+      <input required class="form-input" name="email" type="text" [(ngModel)]="contact.email" placeholder="请输入电子邮箱" />
+      <a class="icon-wrapper" title="必选">
+        <span class="required-tips"></span></a>
+    </div>
+    <div *ngIf="!moreOptions?.birthday[1]" class="form-group">
+      <span class="form-span">生日</span>
+      <input required class="form-input" name="birthday" type="text" [(ngModel)]="contact.birthday" placeholder="请输入生日" />
+      <a class="icon-wrapper" (click)="removeOption('birthday')" title="移除">
+        <span class="remove-option-icon"></span>
+      </a>
+    </div>
+    <div *ngIf="!moreOptions?.address[1]" class="form-group">
+      <span class="form-span">地址</span>
+      <input required class="form-input" name="address" type="text" [(ngModel)]="contact.address" placeholder="请输入地址" />
+      <a class="icon-wrapper" (click)="removeOption('address')" title="移除">
+        <span class="remove-option-icon"></span>
+      </a>
+    </div>
+    <div class="form-group">
+      <input class="btn-success margin-right-10" type="submit" value="确定" />
+      <input class="btn-cancel" type="button" value="取消" (click)="goList()" />
+    </div>
+    <div class="form-group-options">
+      <span class="form-span form-span-options">其他选项</span>
+      <select name='options' (ngModel)="addedOption" (ngModelChange)="addOption($event)">
+        <option selected [value]="'default'">请选择</option>
+        <option *ngIf="moreOptions?.birthday[1]" [value]="'birthday'">{{moreOptions?.birthday[0]}}</option>
+        <option *ngIf="moreOptions?.address[1]" [value]="'address'">{{moreOptions?.address[0]}}</option>
+      </select>
+    </div>
+  </form>
 </div>
