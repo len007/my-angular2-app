@@ -1,13 +1,5 @@
 <div class="html5-content">
-    <progress max="100" value="20">这是头部</progress>
-    <p><ruby><rt>注释内容</rt><rp>浏览器不支持时如何显示</rp></ruby></p>
-    发布日期<time datetime="2014-12-25T09:00">9：00</time>
-    <p>TML5新增的标签及使用 前端这块 百家号08-2810:59 小编利用闲暇时间进行收集<wbr>总结了HTML5的新特性,基本除了IE9以下都可以使用,在这里分享给大家供大家</p>
-    <dialog>dd</dialog>
-    <span><details>ddddddd</details></span>
-    <p><keygen>hah</keygen></p>
-    <nav><p>kkkkkkkkkkkkkkkkkkk</p></nav>
-    <aside>sddff</aside>
+    <progress max="100" value="20">这是进度条</progress>
     <article>iiiii<mark>BBB</mark>iiii</article>
     <div style="text-align:center;">
         <video id="myVideo" #myVideo [controls]="controls" [width]="videoWidth" 
@@ -22,5 +14,63 @@
         <button (click)="makeBig()">大</button>
         <button (click)="makeNormal()">中</button>
         <button (click)="makeSmall()">小</button>
-      </div> 
+      </div>
+      <section>
+          <header style="text-align:center">
+            <h1>
+              欢迎来到德克园
+            </h1>
+          </header>
+        
+          <details>
+            <summary>点开有惊喜</summary>
+            哈哈，这是详细信息
+          </details>
+          <form method="POST">
+            <fieldset style="text-align:center;">
+              <legend>用户注册</legend>
+              <ol style="text-align:left;">
+                <li>
+                  <label for="username">用户名</label>
+                  <input type="text" name="username" id="username" pattern="[a-zA-Z0-9]{3,15}" required>
+                </li>
+                <li>
+                  <label for="pw">密码</label>
+                  <input type="password" name="pw" id="pw" required>
+                </li>
+                <li>
+                  <label for="email">邮件</label>
+                  <input type="email" name="email" id="email" required list="emaillist">
+                  <datalist id="emaillist">
+                    <option value="2422082778@qq.com">我</option>
+                    <option value="2763340192@qq.com">你</option>
+                    <option value="1962966607@qq.com">它</option>
+                  </datalist>
+                </li>
+                <li>
+                  <label for="telPhone">电话</label>
+                  <input type="text" name="telPhone" id="telPhone" required pattern="[1-9][0-9]{10}">
+                </li>
+                <li>
+                  <label for="birthday">生日</label>
+                  <input type="date" name="birthday" id="birthday" required>
+                </li>
+                <li>
+                  <label for="search">用户名</label>
+                  <input type="url" name="search" required list="urllist" id="search">
+                  <datalist id="urllist">
+                    <option value="https://www.baidu.com">百度</option>
+                    <option value="https://www.google.com">谷歌</option>
+                    <option value="https://www.sina.com">新浪</option>
+                  </datalist>
+                </li>
+                <li>
+                  <input type="submit" value="确定">
+                  <input type="reset" value="重置">
+                </li>
+              </ol>
+            </fieldset>
+          </form>
+        </section>
+        
 </div>
