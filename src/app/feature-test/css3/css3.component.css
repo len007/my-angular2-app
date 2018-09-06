@@ -1,0 +1,8 @@
+.gradient {
+    width: 100px;
+    height: 100px;
+    border: 40px solid;
+    /* border-image: linear-gradient(to top, #000, #fff) 30; */
+    /* border-image: linear-gradient(to top left, #000, #fff) 30; */
+    border-image: linear-gradient(270deg, #000, #fff) 30;
+}

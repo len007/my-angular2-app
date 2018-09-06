@@ -6,15 +6,17 @@ export const FeatureRouterModule: Routes = [
         path: '',
         component: FeatureComponent,
         children: [{
-            path: '', pathMatch:'full', redirectTo: 'partvar'
+            path: '', pathMatch: 'full', redirectTo: 'partvar'
         }, {
             path: 'html5', loadChildren: './html5/html5.module#Html5Module'
         }, {
+            path: 'css3', loadChildren: './css3/css3.module#Css3Module'
+        }, {
             path: 'partvar', loadChildren: './partvar/parent/parent.module#ParentModule'
         }, {
-            path: 'animation', 
+            path: 'animation',
             loadChildren: './animations-example-component/animations-example-component.module#AnimationsExampleComponentModule'
-        },{
+        }, {
             path: 'detector',
             loadChildren: './change-detector/parent-detector/parent.detector.module#ParentDetectorModule'
         }, {
@@ -26,7 +28,7 @@ export const FeatureRouterModule: Routes = [
         }, {
             path: 'service',
             loadChildren: './service/mservice.module#MserviceService'
-        },{
+        }, {
             path: 'http_jsonp_httpclient',
             loadChildren: './http_jsonp_httpclient/index.module#indexModule'
         }, {

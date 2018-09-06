@@ -13,13 +13,17 @@ export class FeatureComponent implements OnInit{
         let urlArr = this.router.url.split('/');
         this.currentMenu = urlArr[urlArr.length-1];
     }
-    goPartvar(){
-        this.currentMenu = 'partvar';
-        this.router.navigate(['/feature/partvar']);
+    goCss3(){
+        this.currentMenu = 'css3';
+        this.router.navigate(['/feature/css3']);
     }
     goHtml5(){
         this.currentMenu = 'html5';
         this.router.navigate(['/feature/html5']);
+    }
+    goPartvar(){
+        this.currentMenu = 'partvar';
+        this.router.navigate(['/feature/partvar']);
     }
     goAnimation(){
         this.currentMenu = 'animation';
