@@ -4,6 +4,8 @@ import { ListComponent } from './list.component'
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from  '@angular/common/http';
+
 
 @NgModule({
     imports: [
@@ -11,7 +13,8 @@ import { CommonModule } from '@angular/common';
       CommonModule,
     //   FileUploadModule,
       HttpModule,
-      FormsModule
+      FormsModule,
+      HttpClientModule
     ],
     declarations: [
       ListComponent,

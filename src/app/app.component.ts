@@ -1,5 +1,4 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
-import { FileUploader } from 'ng2-file-upload';
 import { Http, RequestOptions, Headers, URLSearchParams } from '@angular/http';
 declare var jQuery: any;
 

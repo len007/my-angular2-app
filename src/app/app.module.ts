@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { AppRouterModule } from './app-router.module';
 import { CommonModule } from '@angular/common';
-import { FileUploadModule } from 'ng2-file-upload';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { ListModule } from './list/list.module';
@@ -14,7 +13,6 @@ import { ListModule } from './list/list.module';
   imports: [
     BrowserModule,
     CommonModule,
-    FileUploadModule,
     HttpModule,
     FormsModule,
     ListModule,

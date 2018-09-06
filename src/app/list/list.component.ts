@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 declare var jQuery: any;
 
 @Component({
@@ -20,7 +21,7 @@ export class ListComponent implements OnInit {
         maxPageNo: 0
     }
     items: Array<any>;
-    constructor(private http: Http) { }
+    constructor(private http: Http, private httpC: HttpClient) { }
     ngOnInit() {
         this.getMaxPageNo();
         this.items = [{
@@ -87,7 +88,12 @@ export class ListComponent implements OnInit {
     }
     // 根据日期查询
     searchForTime() {
-        console.log(jQuery('.textbox-value').val());
+        let nowTime = jQuery('.textbox-value').val();
+        let searchUrl = jQuery('#searchUrl').val();
+        let params = new HttpParams().set('nowTime', nowTime);
+        this.httpC.post(searchUrl, params).subscribe(res => {
+            console.log(res);
+        });
     }
     selectedFileOnChanged(event) {
         this.fileName = event.target.value;
