@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
         this.current = 'list';
         this.urlHelp.valueUpdated.subscribe(val=>{
             this.routerUrl = this.urlHelp.getUrl()||window.location.href;
-            console.log(this.routerUrl);
+            // console.log(this.routerUrl);
             if(window.location.href.indexOf('list') > 0){
                 this.current = 'list';
             }else if (window.location.href.indexOf('collection') > 0){

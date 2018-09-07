@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { urlHelpService } from '../../shared/service/urlhelp.service';
-import { Subject } from 'rxjs';
 
 @Component({
     selector: 'feature-content',
@@ -10,7 +9,6 @@ import { Subject } from 'rxjs';
 })
 export class FeatureComponent implements OnInit {
     currentMenu: string = 'grid';
-    valueUpdated: Subject<string> = new Subject<string>();
     constructor(private router: Router, private urlHelp: urlHelpService) { }
     ngOnInit() {
         let urlArr = this.router.url.split('/');
@@ -52,5 +50,9 @@ export class FeatureComponent implements OnInit {
     goHttp() {
         this.currentMenu = 'http_jsonp_httpclient';
         this.router.navigate(['/feature/http_jsonp_httpclient']);
+    }
+    goObservable() {
+        this.currentMenu = 'observable';
+        this.router.navigate(['/feature/observable']);
     }
 }

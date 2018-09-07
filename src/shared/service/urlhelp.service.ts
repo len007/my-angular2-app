@@ -4,10 +4,10 @@ import { Subject } from "rxjs";
 @Injectable()
 export class urlHelpService {
     private url: string = ''
-    valueUpdated: Subject<string> = new Subject<string>();
+    valueUpdated: Subject<any> = new Subject<any>();
     constructor() { }
     setUrl(val) {
-        
+        this.url = val;
         this.valueUpdated.next(val);
     }
     getUrl(): string {
