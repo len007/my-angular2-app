@@ -15,7 +15,7 @@ export class ListComponent implements OnInit {
     orginForm: ElementRef;
     inputPageNo: number = 1;
     pages: any = {
-        pageSize: 6,
+        pageSize: 10,
         pageNo: 1,
         total: 15,
         maxPageNo: 0
@@ -24,19 +24,7 @@ export class ListComponent implements OnInit {
     constructor(private http: Http, private httpC: HttpClient) { }
     ngOnInit() {
         this.getMaxPageNo();
-        this.items = [{
-            name: '张三',
-            tel: '15111111111',
-            age: 20,
-        }, {
-            name: '李四',
-            tel: '15222222222',
-            age: 30
-        }, {
-            name: '王子',
-            tel: '15333333333',
-            age: 40
-        }]
+        this.items = JSON.parse('[{"recordId":0,"attempt":1},{"recordId":1,"attempt":2}]');
         this.reloadDateBox();
     }
     downloadData() {
@@ -93,6 +81,12 @@ export class ListComponent implements OnInit {
         let params = new HttpParams().set('nowTime', nowTime);
         this.httpC.post(searchUrl, params).subscribe(res => {
             console.log(res);
+            if(res['code'] === 1 ){
+                this.items = JSON.parse(res['msg']);
+                this.pages.total = this.items.length;
+            } else{
+                alert('系统繁忙，请稍后再试！');
+            }
         });
     }
     selectedFileOnChanged(event) {

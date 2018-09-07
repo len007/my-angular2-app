@@ -116,11 +116,21 @@
     height: calc(100% - 270px);
     background-color: rgb(245, 245, 245);
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 20px 20px;
+}
+.my-table{
+    width: 100%;
+    text-align: center;
+}
+.list-row-header {
+    font-weight: bold;
 }
 
-.list-row-header {}
+.list-row {
+    font-size: 14px;
+}
 
-.list-row {}
-
-.list-cell {}
+.list-cell {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
