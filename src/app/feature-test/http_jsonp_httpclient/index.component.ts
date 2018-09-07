@@ -15,13 +15,24 @@ export class indexComponent implements OnInit {
         private httpC: myhttpClientService) { }
     ngOnInit() {
         // 使用HttpClient方式
-        this.httpC.getData().subscribe(res=>{
+        this.httpC.postQueryString().subscribe(res=>{
             this.data = res;
             console.log(res);
         },error=>{
             console.error(error);
         });
-
+        this.httpC.postFormData().subscribe(res=>{
+            this.data = res;
+            console.log(res);
+        },error=>{
+            console.error(error);
+        });
+        this.httpC.postRequestPayload().subscribe(res=>{
+            this.data = res;
+            console.log(res);
+        },error=>{
+            console.error(error);
+        });
         // 使用Http方式
         // this.http.getData().subscribe(res => {
         //     console.log(res);

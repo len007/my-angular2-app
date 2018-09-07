@@ -1,5 +1,6 @@
-import { RouterModule, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { urlHelpService } from '../../service/urlhelp.service';
 
 @Component({
     selector: 'header-content',
@@ -9,10 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
     current: string = 'list';
-    constructor(private router: Router) { }
+    routerUrl: String = '';
+    
+    constructor(private router: Router, private urlHelp: urlHelpService) { }
     ngOnInit() {
-        // 这里不能使用this.router.url来获取url，因为还没加载出来
         this.current = 'list';
+        this.urlHelp.valueUpdated.subscribe(val=>{
+            this.routerUrl = this.urlHelp.getUrl()||window.location.href;
+            console.log(this.routerUrl);
+            if(window.location.href.indexOf('list') > 0){
+                this.current = 'list';
+            }else if (window.location.href.indexOf('collection') > 0){
+                this.current = 'collection';
+            }else if(window.location.href.indexOf('feature') > 0){
+                this.current = 'feature';
+            }
+        })
+        // 这里不能使用this.router.url来获取url，因为还没加载出来
+        if(window.location.href.indexOf('list') > 0){
+            this.current = 'list';
+        }else if (window.location.href.indexOf('collection') > 0){
+            this.current = 'collection';
+        }else if(window.location.href.indexOf('feature') > 0){
+            this.current = 'feature';
+        }
+    }
+    ngAfterContentInit(){
         if(window.location.href.indexOf('list') > 0){
             this.current = 'list';
         }else if (window.location.href.indexOf('collection') > 0){

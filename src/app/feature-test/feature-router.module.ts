@@ -6,7 +6,7 @@ export const FeatureRouterModule: Routes = [
         path: '',
         component: FeatureComponent,
         children: [{
-            path: '', pathMatch: 'full', redirectTo: 'partvar'
+            path: '', pathMatch: 'full', redirectTo: 'css3'
         }, {
             path: 'html5', loadChildren: './html5/html5.module#Html5Module'
         }, {
@@ -32,7 +32,7 @@ export const FeatureRouterModule: Routes = [
             path: 'http_jsonp_httpclient',
             loadChildren: './http_jsonp_httpclient/index.module#indexModule'
         }, {
-            path: '**', redirectTo: 'partvar'
+            path: '**', redirectTo: ''
         }]
     }
 ]

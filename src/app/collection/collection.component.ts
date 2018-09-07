@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../shared/service/contact.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { urlHelpService } from '../../shared/service/urlhelp.service';
 
 @Component({
     moduleId: module.id,
@@ -16,7 +17,8 @@ export class CollectionComponent implements OnInit {
         pageSize: 3,
         total: 0,
     };
-    constructor(private contactService: ContactService, private route: ActivatedRoute, private router: Router) { }
+    constructor(private contactService: ContactService, private route: ActivatedRoute,
+         private router: Router, private urlHelp: urlHelpService) { }
     ngOnInit() {
         let tmpAllData = sessionStorage.getItem('allData');
         if (tmpAllData) {
@@ -25,6 +27,7 @@ export class CollectionComponent implements OnInit {
         } else {
             this.getContacts();
         }
+        this.urlHelp.setUrl(this.router.url);
     }
 
     // 获取所有联系人
