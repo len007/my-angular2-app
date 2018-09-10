@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { urlHelpService } from '../../shared/service/urlhelp.service';
+import { urlHelpSubjectService } from '../../shared/service/urlHelpSubject.service';
 
 @Component({
     selector: 'feature-content',
@@ -9,7 +9,7 @@ import { urlHelpService } from '../../shared/service/urlhelp.service';
 })
 export class FeatureComponent implements OnInit {
     currentMenu: string = 'grid';
-    constructor(private router: Router, private urlHelp: urlHelpService) { }
+    constructor(private router: Router, private urlHelp: urlHelpSubjectService) { }
     ngOnInit() {
         let urlArr = this.router.url.split('/');
         this.currentMenu = urlArr[urlArr.length - 1];

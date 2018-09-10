@@ -10,7 +10,8 @@ import {HttpClientModule} from "@angular/common/http";
 
 import { ContactService } from '../shared/service/contact.service'
 import { LoggerService } from '../shared/service/logger.service';
-import { urlHelpService } from '../shared/service/urlhelp.service';
+import { urlHelpSubjectService } from '../shared/service/urlHelpSubject.service';
+import { urlHelpObservableService } from '../shared/service/urlHelpObservable.service';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { urlHelpService } from '../shared/service/urlhelp.service';
     SharedModule.forChild(),
     RouterModule.forRoot(AppRouterModule)
   ],
-  providers:[ ContactService, LoggerService,urlHelpService ],
+  providers:[ ContactService, LoggerService,urlHelpSubjectService, urlHelpObservableService ],
   declarations: [
     AppComponent,
   ],

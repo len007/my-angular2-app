@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { ContactService } from '../../shared/service/contact.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { urlHelpService } from '../../shared/service/urlhelp.service';
+import { urlHelpSubjectService } from '../../shared/service/urlHelpSubject.service';
 
 import { Subscription } from 'rxjs';
 
@@ -20,7 +20,7 @@ export class ListComponent implements OnInit, OnChanges {
         total: 0,
     };
     constructor(private contactService: ContactService, private route: ActivatedRoute,
-         private router: Router, private urlHelp: urlHelpService) { }
+         private router: Router, private urlHelp: urlHelpSubjectService) { }
     ngOnInit() {
         let tmpAllData = sessionStorage.getItem('allData');
         if (tmpAllData) {

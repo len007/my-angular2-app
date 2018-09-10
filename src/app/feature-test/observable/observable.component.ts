@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Subject, BehaviorSubject, AsyncSubject, ReplaySubject } from "rxjs";
+import { Observable } from "rxjs";
 
 @Component({
     moduleId: module.id,
@@ -19,6 +19,9 @@ export class ObservableComponent implements OnInit {
     }
     constructor() { }
     ngOnInit() {
+        let myObservable = new Observable();
+        myObservable.subscribe(this.observerA);
+        this.observerA.next('qq');
     }
 
 }

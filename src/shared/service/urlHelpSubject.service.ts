@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 
 @Injectable()
-export class urlHelpService {
+export class urlHelpSubjectService {
     private url: string = ''
     valueUpdated: Subject<any> = new Subject<any>();
     constructor() { }
