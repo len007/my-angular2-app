@@ -10,7 +10,7 @@
             <span class="login-btn">登陆</span>
         </a>
         <a class="icon-wrapper" *ngIf="isLogin">
-            <span class="user-name">hi，{{userName}}</span>
+            <span class="user-name">Hi，<b>{{userName}}</b></span>
         </a>
         <a class="icon-wrapper" *ngIf="isLogin" (click)="disLogin()">
             <span class="login-btn">注销</span>

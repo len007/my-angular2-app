@@ -9,7 +9,7 @@ declare var jQuery: any;
     styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-    selectDateTime: String = "2018-01-01";
+    selectDateTime: String = "2018-09-06";
     fileName: String = '';
     @ViewChild('orginForm')
     orginForm: ElementRef;
@@ -23,8 +23,8 @@ export class ListComponent implements OnInit {
     items: Array<any>;
     constructor(private http: Http, private httpC: HttpClient) { }
     ngOnInit() {
-        this.getMaxPageNo();
-        this.items = JSON.parse('[{"recordId":0,"attempt":1},{"recordId":1,"attempt":2}]');
+        // this.items = JSON.parse('[{"callTime":"2016-01-01 12:00:00","contactInfo":"18681463625","attempt":2,"visitResult":1,"recordId":0}]');
+        this.searchForTime();
         this.reloadDateBox();
     }
     downloadData() {
@@ -76,7 +76,7 @@ export class ListComponent implements OnInit {
     }
     // 根据日期查询
     searchForTime() {
-        let nowTime = jQuery('.textbox-value').val();
+        let nowTime = jQuery('.textbox-value').val() || this.selectDateTime;
         let searchUrl = jQuery('#searchUrl').val();
         let params = new HttpParams()
             .set('nowTime', nowTime)
@@ -84,10 +84,13 @@ export class ListComponent implements OnInit {
             .set('pageNum', this.pages.pageNo);
         this.httpC.post(searchUrl, params).subscribe(res => {
             console.log(res);
-            if(res['code'] === 1 ){
-                this.items = JSON.parse(res['msg']);
-                this.pages.total = this.items.length;
-            } else{
+            if (res['code'] === '1') {
+                let result = JSON.parse(res['msg']);
+                this.items = result['listPHData'] || {};
+                console.log(this.items);
+                this.pages.total = result['countNum'] || 0;
+                this.getMaxPageNo();
+            } else {
                 alert('系统繁忙，请稍后再试！');
             }
         });

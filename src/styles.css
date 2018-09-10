@@ -107,3 +107,11 @@ a.icon-wrapper span{
     width: 100%;
 }
 
+.no-data {
+    display: inline-block;
+    width: 300px;
+    height: 343px;
+    background-image: url('assets/img/nodata.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }

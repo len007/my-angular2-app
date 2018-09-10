@@ -33,12 +33,21 @@
 <section class="list-content">
   <table class="my-table">
     <tr class="list-row-header">
-      <td>姓名</td>
-      <td>年龄</td>
+      <td>记录号</td>
+      <td>拨打时间</td>
+      <td>联系方式</td>
+      <td>联系客户次数</td>
+      <td>拨打结果</td>
     </tr>
     <tr class="list-row" *ngFor="let item of items">
       <td class="list-cell">{{item?.recordId}}</td>
+      <td class="list-cell">{{item?.callTime}}</td>
+      <td class="list-cell">{{item?.contactInfo}}</td>
       <td class="list-cell">{{item?.attempt}}</td>
+      <td class="list-cell">{{item?.visitResult}}</td>
+    </tr>
+    <tr *ngIf="pages?.total === 0">
+      <td colspan="5"><span class="no-data"></span></td>
     </tr>
   </table>
 </section>
