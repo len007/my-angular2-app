@@ -29,6 +29,8 @@ export class ListComponent implements OnInit {
     }
     downloadData() {
         let downloadUrl = jQuery('#downloadUrl').val();
+        let nowTime = jQuery('.textbox-value').val() || this.selectDateTime;
+        downloadUrl = downloadUrl + "?nowTime=" + nowTime;
         this.http.get(downloadUrl, { responseType: 3 }).subscribe(res => {
             let data = res.json();
             var blob = new Blob([data], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
@@ -93,6 +95,8 @@ export class ListComponent implements OnInit {
             } else {
                 alert('系统繁忙，请稍后再试！');
             }
+        },error => {
+            alert('系统繁忙，请稍后再试！');
         });
     }
     selectedFileOnChanged(event) {
