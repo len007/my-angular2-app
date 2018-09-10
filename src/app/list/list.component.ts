@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
     pages: any = {
         pageSize: 10,
         pageNo: 1,
-        total: 15,
+        total: 0,
         maxPageNo: 0
     }
     items: Array<any>;
@@ -78,7 +78,10 @@ export class ListComponent implements OnInit {
     searchForTime() {
         let nowTime = jQuery('.textbox-value').val();
         let searchUrl = jQuery('#searchUrl').val();
-        let params = new HttpParams().set('nowTime', nowTime);
+        let params = new HttpParams()
+            .set('nowTime', nowTime)
+            .set('pageSize', this.pages.pageSize)
+            .set('pageNum', this.pages.pageNo);
         this.httpC.post(searchUrl, params).subscribe(res => {
             console.log(res);
             if(res['code'] === 1 ){
