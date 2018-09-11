@@ -4,9 +4,10 @@ import { Subject, BehaviorSubject, AsyncSubject, ReplaySubject } from "rxjs";
 @Component({
     moduleId: module.id,
     templateUrl: './subject.component.html',
-    styles:['mark{background-color:#eee;color:red}']
+    styleUrls:['./subject.component.css']
 })
 export class SubjectComponent implements OnInit {
+    currentTab: number = 1;
     observerA: any = { // 定义观察者 A
         next: data => console.log('我是观察者A，我抽到的数字是' + data),// 收到订阅以后执行的事件
         error: error => console.error(error), // 运行出现异常的处理
@@ -23,6 +24,9 @@ export class SubjectComponent implements OnInit {
         this.myReplaySubject();
         this.myAsyncSubject();
         this.myBehaviorSubject();
+    }
+    clickOpen(sub){
+        this.currentTab = sub;
     }
 
     /**

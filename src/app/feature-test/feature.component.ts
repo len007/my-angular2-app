@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { urlHelpSubjectService } from '../../shared/service/urlHelpSubject.service';
+import { urlHelpObservableService } from '../../shared/service/urlHelpObservable.service';
 
 @Component({
     selector: 'feature-content',
@@ -9,11 +9,15 @@ import { urlHelpSubjectService } from '../../shared/service/urlHelpSubject.servi
 })
 export class FeatureComponent implements OnInit {
     currentMenu: string = 'grid';
-    constructor(private router: Router, private urlHelp: urlHelpSubjectService) { }
+    constructor(private router: Router, private urlHelpObservable: urlHelpObservableService) { }
     ngOnInit() {
         let urlArr = this.router.url.split('/');
         this.currentMenu = urlArr[urlArr.length - 1];
-        this.urlHelp.setUrl(this.router.url);
+        // this.urlHelpObservable.setUrl(this.router.url);
+        setTimeout(() => {
+            this.urlHelpObservable.setUrl(this.router.url);
+            // this.urlHelpObservable.setUrl('list');
+        }, 2000);
     }
     goCss3() {
         this.currentMenu = 'css3';
@@ -54,9 +58,5 @@ export class FeatureComponent implements OnInit {
     goSubject() {
         this.currentMenu = 'subject';
         this.router.navigate(['/feature/subject']);
-    }
-    goObservable() {
-        this.currentMenu = 'observable';
-        this.router.navigate(['/feature/observable']);
     }
 }

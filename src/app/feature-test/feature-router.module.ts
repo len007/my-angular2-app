@@ -6,9 +6,7 @@ export const FeatureRouterModule: Routes = [
         path: '',
         component: FeatureComponent,
         children: [{
-            path: '', pathMatch: 'full', redirectTo: 'css3'
-        },{
-            path: 'observable', loadChildren: './observable/observable.module#ObservableModule'
+            path: '', pathMatch: 'full', redirectTo: 'subject'
         },{
             path: 'subject', loadChildren: './subject/subject.module#SubjectModule'
         }, {

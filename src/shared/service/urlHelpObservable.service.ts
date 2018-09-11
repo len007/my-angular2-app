@@ -1,17 +1,20 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
 
 @Injectable()
 export class urlHelpObservableService {
     private url: string = '';
-    myObserver:any;
-    valueUpdated: Observable<any> = new Observable<any>();
+    myObserver:any={
+        next: data=>{
+            this.url = data;
+        }
+    };
     constructor() { }
     setUrl(val) {
         this.url = val;
+        this.myObserver.next(val);
     }
-    getUrl(): Observable<any> {
-        return this.valueUpdated;
+    getUrl() {
+        return this.url;
     }
 
 }
