@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { AppComponent } from './app.component';
@@ -13,10 +14,10 @@ import { LoggerService } from '../shared/service/logger.service';
 import { MessageService } from '../shared/service/message.service';
 import { urlHelpObservableService } from '../shared/service/urlHelpObservable.service';
 
-
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HeaderModule,
     LeftMenuModule,
     HttpClientModule,

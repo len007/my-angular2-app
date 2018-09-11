@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { trigger,state,style,transition,animate } from '@angular/animations';
 @Component({
     moduleId: module.id,
-    selector: 'animations-example-component',
-    templateUrl: 'animations-example-component.component.html',
-    styleUrls: ['animations-example-component.component.css'],
+    templateUrl: 'animations.component.html',
+    styleUrls: ['animations.component.css'],
     animations: [
         trigger('buttonStatus', [
             state('on', style({
@@ -20,7 +19,7 @@ import { trigger,state,style,transition,animate } from '@angular/animations';
         ])
     ]
 })
-export class AnimationsExampleComponentComponent {
+export class AnimationsComponent {
     status: string = 'on';
     toggleStatus() {
         this.status = (this.status === 'on') ? 'off' : 'on';

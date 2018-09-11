@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
         this.urlHelpObservable.myObserver = {
             next: data => {
                 this.routerUrl = data || window.location.href;
-                console.log('11' + this.routerUrl);
+                console.log('当前路由：' + this.routerUrl);
                 if (this.routerUrl.indexOf('list') >= 0) {
                     this.current = 'list';
                 } else if (this.routerUrl.indexOf('collection') >= 0) {

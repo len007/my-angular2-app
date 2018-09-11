@@ -6,7 +6,7 @@ export const FeatureRouterModule: Routes = [
         path: '',
         component: FeatureComponent,
         children: [{
-            path: '', pathMatch: 'full', redirectTo: 'subject'
+            path: '', pathMatch: 'full', redirectTo: 'animation'
         },{
             path: 'subject', loadChildren: './subject/subject.module#SubjectModule'
         }, {
@@ -17,7 +17,7 @@ export const FeatureRouterModule: Routes = [
             path: 'partvar', loadChildren: './partvar/parent/parent.module#ParentModule'
         }, {
             path: 'animation',
-            loadChildren: './animations-example-component/animations-example-component.module#AnimationsExampleComponentModule'
+            loadChildren: './animations/animations.module#AnimationsModule'
         }, {
             path: 'detector',
             loadChildren: './change-detector/parent-detector/parent.detector.module#ParentDetectorModule'

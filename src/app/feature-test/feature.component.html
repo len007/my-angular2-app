@@ -2,11 +2,11 @@
 <div class="main-content">
   <nav>
     <p><b>Angular特性</b></p>
+    <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='animation'}" (click)="goAnimation()">动画</a>
     <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='subject'}" (click)="goSubject()">Subject()</a>
     <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='css3'}" (click)="goCss3()">CSS3</a>
     <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='html5'}" (click)="goHtml5()">HTML5</a>
     <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='http_jsonp_httpclient'}" (click)="goHttp()">接口</a>
-    <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='animation'}" (click)="goAnimation()">动画</a>
     <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='partvar'}" (click)="goPartvar()">组件交互</a>
     <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='detector'}" (click)="goDetector()">变化检测</a>
     <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='pipe'}" (click)="goPipe()">管道</a>

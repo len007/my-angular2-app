@@ -3,8 +3,8 @@
     <nav class="my-nav">
       <a class="icon-wrapper" (click)="clickOpen(1)"><span [ngClass]="{'current-menu':currentTab===1}">主要描述</span></a>
       <a class="icon-wrapper" (click)="clickOpen(2)"><span [ngClass]="{'current-menu':currentTab===2}">Subject()</span></a>
-      <a class="icon-wrapper" (click)="clickOpen(4)"><span [ngClass]="{'current-menu':currentTab===4}">BehaviorSubject(value)</span></a>
-      <a class="icon-wrapper" (click)="clickOpen(3)"><span [ngClass]="{'current-menu':currentTab===3}">ReplaySubject(n)</span></a>
+      <a class="icon-wrapper" (click)="clickOpen(3)"><span [ngClass]="{'current-menu':currentTab===3}">BehaviorSubject(value)</span></a>
+      <a class="icon-wrapper" (click)="clickOpen(4)"><span [ngClass]="{'current-menu':currentTab===4}">ReplaySubject(n)</span></a>
       <a class="icon-wrapper" (click)="clickOpen(5)"><span [ngClass]="{'current-menu':currentTab===5}">AsyncSubject()</span></a>
     </nav>
   </header>
@@ -19,6 +19,13 @@
         观察者们或者其它Subject都可以订阅它。</p>
       <p>一旦Subject订阅了Observable，它将会触发Observable开始发射。
         如果原始的Observable是“冷”的，这将会对订阅一个“热”的Observable变量产生影响。</p>
+        <h3>使用方式</h3>
+        <ol>
+          <li>定义发布者：let Observable = new Subject()</li>
+          <li>{{bb}}</li>
+          <li>注册：Observable.subscribe(Observer)</li>
+          <li>广播：注册：Observable.next('Hello!')</li>
+        </ol>
     </article>
   </fieldset>
   <fieldset *ngIf="currentTab===2" class="margin-top-20 padding-20">

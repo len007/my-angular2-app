@@ -7,6 +7,7 @@ import { Subject, BehaviorSubject, AsyncSubject, ReplaySubject } from "rxjs";
     styleUrls:['./subject.component.css']
 })
 export class SubjectComponent implements OnInit {
+    bb: String = `定义观察者：let Observer = { next:data=>{  }, error:error=>{} }`;
     currentTab: number = 1;
     observerA: any = { // 定义观察者 A
         next: data => console.log('我是观察者A，我抽到的数字是' + data),// 收到订阅以后执行的事件
