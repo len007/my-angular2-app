@@ -1,6 +1,41 @@
-button{
-    width: 100px;
-    height: 20px;
-    background-color: #666;
-    font-size: 15px;
+button {
+  width: 100px;
+  height: 20px;
+  background-color: #666;
+  font-size: 15px;
+}
+
+.polaroid {
+  width: 294px;
+  padding: 10px 10px 20px 10px;
+  border: 1px solid #BFBFBF;
+  background-color: white;
+  /* Add box-shadow */
+  box-shadow: 2px 2px 3px #aaaaaa;
+}
+
+.rotate-left {
+  float: left;
+  -ms-transform: rotate(7deg);
+  /* IE 9 */
+  -moz-transform: rotate(7deg);
+  /* Firefox */
+  -webkit-transform: rotate(7deg);
+  /* Safari and Chrome */
+  -o-transform: rotate(7deg);
+  /* Opera */
+  transform: rotate(7deg);
+}
+
+.rotate-right {
+  float: left;
+  -ms-transform: rotate(-8deg);
+  /* IE 9 */
+  -moz-transform: rotate(-8deg);
+  /* Firefox */
+  -webkit-transform: rotate(-8deg);
+  /* Safari and Chrome */
+  -o-transform: rotate(-8deg);
+  /* Opera */
+  transform: rotate(-8deg);
 }
