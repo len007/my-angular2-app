@@ -1,7 +1,8 @@
-import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
-import { Http, RequestOptions, Headers, URLSearchParams } from '@angular/http';
-declare var jQuery: any;
-
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { myCommonService } from './mycommon.service';
+import { Subscription } from "rxjs";
+import * as $ from 'jquery';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,56 +12,46 @@ export class AppComponent implements OnInit {
   isLogin: boolean = false;
   isLoging: boolean = true;
   userName: String = '';
-  passWord: String = ''
+  subscription: Subscription;
+  constructor(private router: Router, private myStatus: myCommonService) { }
 
-  constructor(private http: Http) { }
-  onSubmit() {
-    let loginUrl = jQuery('#loginUrl').val();
-    if (this.userName && this.passWord && loginUrl) {
-      let params = new URLSearchParams();
-      params.append('username', this.userName.toString());
-      params.append('password', this.passWord.toString());
-      let headers = new Headers({
-        "Accept": "application/json"
-      });
-      let options = new RequestOptions({ headers: headers });
-      this.http.post(loginUrl, params, options).toPromise().then(res => {
-        let result = res.json();
-        if (result.success) {
-          this.isLogin = true;
-          sessionStorage.setItem('isLogin', 'true');
-          sessionStorage.setItem('userName', this.userName.toString());
-        } else {
-          alert('账号验证失败！');
-          this.passWord = '';
-        }
-      }, error => {
-        alert('系统繁忙，请稍后再试！');
-      });
-    } else {
-      alert('请输入账号和密码');
-    }
-  }
-
-  stopPropagation(event) {
-    event.stopPropagation();
-  }
-  disLogin() {
+  disLogin() { // 注销
     this.isLogin = false;
     this.userName = '';
-    this.passWord = '';
     sessionStorage.setItem('isLogin', 'false');
     sessionStorage.setItem('userName', '');
+    this.router.navigate(['/login']);
+    this.myStatus.sendStatus({ isLogin: false, isLoging: true, userName: '' });
   }
-
   showLoginModal() {
-    this.isLoging = true;
-  }
-  hideLoginModal() {
-    this.isLoging = false;
+    if (!this.isLoging) {
+      this.isLogin = false;
+      this.isLoging = true;
+      this.userName = '';
+      this.myStatus.sendStatus({ isLogin: false, isLoging: true, userName: '' });
+    }
   }
   ngOnInit() {
     this.isLogin = sessionStorage.getItem('isLogin') === 'true' ? true : false;
     this.userName = sessionStorage.getItem('userName') ? sessionStorage.getItem('userName') : '';
+    if (this.isLogin) {
+      this.router.navigate(['/list']);
+    } else {
+      this.router.navigate(['/login']);
+    }
+    this.subscription = this.myStatus.mySubject.asObservable().subscribe(data => {
+      this.isLoging = data['isLoging'];
+      this.isLogin = this.isLogin || data['isLogin'];
+      this.userName = this.userName || data['userName'];
+      if (this.isLogin && this.userName) {
+        this.router.navigate(['/list']);
+      } else {
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

@@ -84,6 +84,7 @@
   cursor: text;
   margin-right: 2px;
   text-align: right;
+  font-size: 14px;
 }
 
 .pagination-btn:hover {
@@ -139,4 +140,6 @@
   padding-bottom: 10px;
 }
 
-
+.font-size-14{
+  font-size:14px;
+}

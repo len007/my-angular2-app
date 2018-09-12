@@ -1,7 +1,9 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
-import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
-declare var jQuery: any;
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { myCommonService } from '../mycommon.service';
+import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
     selector: 'app-list',
@@ -9,7 +11,9 @@ declare var jQuery: any;
     styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-    selectDateTime: String = "2018-09-06";
+    downloadDataOneTimes: boolean = true;
+    selectDateTime: Date = new Date(new Date(new Date().toLocaleDateString()).getTime() - 1);
+    nowDate: Date = new Date(new Date(new Date().toLocaleDateString()).getTime());
     fileName: String = '';
     @ViewChild('orginForm')
     orginForm: ElementRef;
@@ -21,15 +25,26 @@ export class ListComponent implements OnInit {
         maxPageNo: 0
     }
     items: Array<any>;
-    constructor(private http: Http, private httpC: HttpClient) { }
+    constructor(private router: Router, private http: Http,
+        private httpC: HttpClient, private myStatus: myCommonService) { }
     ngOnInit() {
         // this.items = JSON.parse('[{"callTime":"2016-01-01 12:00:00","contactInfo":"18681463625","attempt":2,"visitResult":1,"recordId":0}]');
         this.searchForTime();
-        this.reloadDateBox();
+    }
+    formatterDate(date) {
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        var d = date.getDate();
+        return y + '-' + (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
     }
     downloadData() {
-        let downloadUrl = jQuery('#downloadUrl').val();
-        let nowTime = jQuery('.textbox-value').val() || this.selectDateTime;
+        if (this.selectDateTime >= this.nowDate) {
+            alert('不支持下载当天及以后的数据！');
+            return;
+        }
+        this.downloadDataOneTimes = false;
+        let downloadUrl = $('#downloadUrl').val();
+        let nowTime = this.formatterDate(this.selectDateTime);
         downloadUrl = downloadUrl + "?nowTime=" + nowTime;
         this.http.get(downloadUrl, { responseType: 3 }).subscribe(res => {
             let data = res.json();
@@ -45,57 +60,31 @@ export class ListComponent implements OnInit {
             //释放URL地址
             URL.revokeObjectURL(objectUrl);
         }, error => {
-            // console.log(error);
             alert('系统繁忙，请稍后再试！');
         });
     }
-    reloadDateBox() {
-        // 初始化日历控件
-        jQuery.fn.datebox.defaults.currentText = '今天';
-        jQuery.fn.datebox.defaults.closeText = '关闭';
-        jQuery.fn.datebox.defaults.okText = '确定';
-        jQuery.fn.datebox.defaults.value = this.selectDateTime;
-        // 重写-解析日期字符串的函数
-        jQuery.fn.datebox.defaults.parser = function (s) {
-            if (!s) return new Date();
-            var ss = (s.split('-'));
-            var y = parseInt(ss[0], 10);
-            var m = parseInt(ss[1], 10);
-            var d = parseInt(ss[2], 10);
-            if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
-                return new Date(y, m - 1, d);
-            } else {
-                return new Date();
-            }
-        }
-        // 重写-格式化日期的函数
-        jQuery.fn.datebox.defaults.formatter = function (date) {
-            var y = date.getFullYear();
-            var m = date.getMonth() + 1;
-            var d = date.getDate();
-            return y + '-' + (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
-        }
-    }
     // 根据日期查询
     searchForTime() {
-        let nowTime = jQuery('.textbox-value').val() || this.selectDateTime;
-        let searchUrl = jQuery('#searchUrl').val();
+        if (this.selectDateTime >= this.nowDate) {
+            alert('不支持查询当天及以后的数据！');
+            return;
+        }
+        let nowTime = this.formatterDate(this.selectDateTime);
+        let searchUrl = $('#searchUrl').val();
         let params = new HttpParams()
-            .set('nowTime', nowTime)
+            .set('nowTime', nowTime.toString())
             .set('pageSize', this.pages.pageSize)
             .set('pageNum', this.pages.pageNo);
-        this.httpC.post(searchUrl, params).subscribe(res => {
-            console.log(res);
+        this.httpC.post(searchUrl.toString(), params).subscribe(res => {
             if (res['code'] === '1') {
                 let result = JSON.parse(res['msg']);
                 this.items = result['listPHData'] || {};
-                console.log(this.items);
                 this.pages.total = result['countNum'] || 0;
                 this.getMaxPageNo();
             } else {
                 alert('系统繁忙，请稍后再试！');
             }
-        },error => {
+        }, error => {
             alert('系统繁忙，请稍后再试！');
         });
     }
@@ -103,10 +92,9 @@ export class ListComponent implements OnInit {
         this.fileName = event.target.value;
     }
     uploadFileAction() {
-        let uploadUrl = jQuery('#uploadUrl').val();
+        let uploadUrl = $('#uploadUrl').val();
         var mark = this.orginForm.nativeElement.mark.value;
         var file = this.orginForm.nativeElement.file.files[0];
-        console.log('file', file);
         var fm = new FormData();
         fm.append('mark', mark);
         fm.append('file', file);
@@ -114,10 +102,8 @@ export class ListComponent implements OnInit {
             "Accept": "application/json"
         });
         let options = new RequestOptions({ headers: headers });
-        this.http.post(uploadUrl, fm, options).subscribe(res => {
-            console.log(res.status);
+        this.http.post(uploadUrl.toString(), fm, options).subscribe(res => {
             let result = res.json();
-            console.log(result);
             if (result.success) {
                 alert('上传成功');
             } else {

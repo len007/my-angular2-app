@@ -1,0 +1,21 @@
+<div class="body-bg" *ngIf="!isLogin">
+  <div class="modal" (click)="hideLoginModal()" *ngIf="isLoging">
+    <div class="login-panel" (click)="stopPropagation($event)">
+      <form class="form-control" (ngSubmit)="onSubmit()" role="form" #f="ngForm">
+        <div class="form-group">
+          <h3 class="diy-h3">智能语音系统</h3>
+          <br><br>
+        </div>
+        <div class="form-group">
+          <input required class="form-input" name="name" type="text" [(ngModel)]="userName" placeholder="请输入账号" />
+        </div>
+        <div class="form-group">
+          <input required class="form-input" name="passWord" type="password" [(ngModel)]="passWord" placeholder="请输入密码" />
+        </div>
+        <div class="form-group">
+          <input class="form-submit" type="submit" value="登陆" [disabled]="!(userName&&passWord)" [ngClass]="{'form-submit-disabled': !(userName&&passWord)}" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

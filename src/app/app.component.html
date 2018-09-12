@@ -7,7 +7,7 @@
             <span class="user-icon"></span>
         </a>
         <a class="icon-wrapper" *ngIf="!isLogin" (click)="showLoginModal()">
-            <span class="login-btn">登陆</span>
+            <span class="login-btn" [ngClass]="{'login-btn-hover': isLoging}">登陆</span>
         </a>
         <a class="icon-wrapper" *ngIf="isLogin">
             <span class="user-name">Hi，<b>{{userName}}</b></span>
@@ -17,30 +17,8 @@
         </a>
     </div>
 </div>
-<div class="body-bg" *ngIf="!isLogin" >
-    <div class="modal"(click)="hideLoginModal()" *ngIf="isLoging">
-        <div class="login-panel" (click)="stopPropagation($event)">
-            <form class="form-control" (ngSubmit)="onSubmit()" role="form" #f="ngForm">
-                <div class="form-group">
-                    <h3 class="diy-h3">XXX系统</h3>
-                    <br><br>
-                </div>
-                <div class="form-group">
-                    <input required class="form-input" name="name" type="text" [(ngModel)]="userName" placeholder="请输入账号" />
-                </div>
-                <div class="form-group">
-                    <input required class="form-input" name="passWord" type="password" [(ngModel)]="passWord" placeholder="请输入密码" />
-                </div>
-                <div class="form-group">
-                    <input class="form-submit" type="submit" value="登陆" [disabled]="!(userName&&passWord)" [ngClass]="{'form-submit-disabled': !(userName&&passWord)}"
-                    />
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<app-list [hidden]="!isLogin"></app-list>
+<router-outlet></router-outlet>
+<!-- <app-list *ngIf="isLogin"></app-list> -->
 <div style="width:100%;height:40px;text-align:center;line-height: 40px;">
     @Copyright 平安科技.智能语音组.Design. All rights reserved.
 </div>
