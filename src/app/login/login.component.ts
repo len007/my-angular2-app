@@ -34,10 +34,10 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.myStatus.sendStatus({ isLogin: false, isLoging: false, userName: this.userName });
     }
     onSubmit() {
-        this.isLogin = true;
-        sessionStorage.setItem('isLogin', 'true');
-        sessionStorage.setItem('userName', this.userName.toString());
-        this.myStatus.sendStatus({ isLogin: true, isLoging: false, userName: this.userName });
+        // this.isLogin = true;
+        // sessionStorage.setItem('isLogin', 'true');
+        // sessionStorage.setItem('userName', this.userName.toString());
+        // this.myStatus.sendStatus({ isLogin: true, isLoging: false, userName: this.userName });
         let loginUrl = $('#loginUrl').val().toString();
         if (this.userName && this.passWord && loginUrl) {
             let params = new HttpParams()
