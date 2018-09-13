@@ -12,8 +12,8 @@ import * as $ from 'jquery';
 })
 export class ListComponent implements OnInit {
     downloadDataOneTimes: boolean = true;
-    selectDateTime: Date = new Date(new Date(new Date().toLocaleDateString()).getTime() - 1);
-    nowDate: Date = new Date(new Date(new Date().toLocaleDateString()).getTime());
+    selectDateTime: Date;
+    nowDate: Date;
     fileName: String = '';
     @ViewChild('orginForm')
     orginForm: ElementRef;
@@ -26,16 +26,31 @@ export class ListComponent implements OnInit {
     }
     items: Array<any>;
     constructor(private router: Router, private http: Http,
-        private httpC: HttpClient, private myStatus: myCommonService) { }
+        private httpC: HttpClient, private myStatus: myCommonService) {
+            let tt = new Date();
+            this.selectDateTime = new Date(this.formatterDate2(tt));
+            this.nowDate = new Date(this.formatterDate1(tt));
+        }
     ngOnInit() {
-        // this.items = JSON.parse('[{"callTime":"2016-01-01 12:00:00","contactInfo":"18681463625","attempt":2,"visitResult":1,"recordId":0}]');
         this.searchForTime();
+    }
+    formatterDate1(date) {
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        var d = date.getDate();
+        return y + '-' + (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
+    }
+    formatterDate2(date) {
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        var d = date.getDate() - 1;
+        return y + '/' + (m < 10 ? ('0' + m) : m) + '/' + (d < 10 ? ('0' + d) : d);
     }
     formatterDate(date) {
         var y = date.getFullYear();
         var m = date.getMonth() + 1;
         var d = date.getDate();
-        return y + '-' + (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
+        return y + '/' + (m < 10 ? ('0' + m) : m) + '/' + (d < 10 ? ('0' + d) : d);
     }
     downloadData() {
         if (this.selectDateTime >= this.nowDate) {

@@ -32,6 +32,9 @@ export class AppComponent implements OnInit {
     }
   }
   ngOnInit() {
+    window.addEventListener("beforeunload", (event)=> {
+      this.router.navigate(['']);
+    });
     this.isLogin = sessionStorage.getItem('isLogin') === 'true' ? true : false;
     this.userName = sessionStorage.getItem('userName') ? sessionStorage.getItem('userName') : '';
     if (this.isLogin) {
