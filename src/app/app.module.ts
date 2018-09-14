@@ -5,28 +5,28 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { AppRouterModule } from './app-router.module';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from  '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { ListModule } from './list/list.module';
-import { myCommonService } from './mycommon.service';
 import { EasyUIModule } from 'ng-easyui/components/easyui/easyui.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DateBoxModule } from 'ng-easyui/components/datebox/datebox.module';
+import {HashLocationStrategy , LocationStrategy} from '@angular/common';
 
 @NgModule({
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     CommonModule,
     HttpModule,
+    HttpClientModule,
     FormsModule,
-    ListModule,
     EasyUIModule,
+    DateBoxModule,
     RouterModule.forRoot(AppRouterModule),
   ],
   declarations: [
     AppComponent,
   ],
-  providers: [myCommonService],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
