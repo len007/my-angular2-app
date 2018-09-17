@@ -146,10 +146,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
     let options = new RequestOptions({ headers: headers });
     this.http.post(uploadUrl.toString(), fm, options).subscribe(res => {
       let result = res.json();
-      if (result.success) {
+      if (result['code']==='1') {
         alert('上传成功');
       } else {
-        alert('上传失败');
+        alert('上传失败，请稍后再试！');
       }
     }, error => {
       alert('系统繁忙，请稍后再试！');
