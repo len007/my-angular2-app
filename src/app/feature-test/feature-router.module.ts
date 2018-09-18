@@ -6,8 +6,10 @@ export const FeatureRouterModule: Routes = [
         path: '',
         component: FeatureComponent,
         children: [{
-            path: '', pathMatch: 'full', redirectTo: 'animation'
-        },{
+            path: '', pathMatch: 'full', redirectTo: 'prototype'
+        }, {
+            path: 'prototype', loadChildren: './prototype/prototype.module#PrototypeModule'
+        }, {
             path: 'subject', loadChildren: './subject/subject.module#SubjectModule'
         }, {
             path: 'html5', loadChildren: './html5/html5.module#Html5Module'

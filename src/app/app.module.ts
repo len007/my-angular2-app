@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { AppRouterModule } from './app-router.module';
 import { HeaderModule } from '../shared/component/header/header.module';
 import { LeftMenuModule } from '../shared/component/left-menu/leftmenu.module';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 
 import { ContactService } from '../shared/service/contact.service'
 import { LoggerService } from '../shared/service/logger.service';
@@ -22,9 +22,15 @@ import { urlHelpObservableService } from '../shared/service/urlHelpObservable.se
     LeftMenuModule,
     HttpClientModule,
     SharedModule.forChild(),
-    RouterModule.forRoot(AppRouterModule)
+    RouterModule.forRoot(AppRouterModule, { useHash: true })
   ],
-  providers:[ ContactService, LoggerService,MessageService, urlHelpObservableService ],
+  providers: [
+    ContactService,
+    LoggerService,
+    MessageService,
+    urlHelpObservableService,
+    // { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   declarations: [
     AppComponent,
   ],
