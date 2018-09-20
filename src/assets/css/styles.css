@@ -1,3 +1,6 @@
+@import '~ng-easyui/themes/material/easyui.css';
+@import '~ng-easyui/themes/angular.css';
+@import '~ng-easyui/themes/icon.css';
 html,
 body {
   margin: 0;

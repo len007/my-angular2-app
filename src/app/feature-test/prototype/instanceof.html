@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>原型链Test</title>
+  <base href="./">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <script type="text/javascript">
+    function fun1() {
+      /* 1. 常规用法
+        instanceof 用来判断变量是否是某对象的实例
+        或者说属于某种类型
+        */
+      // var oStringObject = new String("hello world");
+      // console.log(oStringObject instanceof String); // 输出 "true"
+
+      /* 继承关系中的用法
+        instanceof 也可以用来判断变量是否是某对象父类型的实例
+        多层继承关系也适用
+         */
+      function Aoo() {
+        this.name1 = 'HZ';
+      }
+      // Aoo.prototype.name1 = 'HZ';
+      function Boo() {
+        this.name2 = 'ZZL';
+      }
+      Boo.prototype = new Aoo(); // JavaScript 原型继承
+      var b = new Boo();
+
+      // true true
+      console.log(b instanceof Aoo);
+      console.log(b instanceof Boo);
+
+      console.log(Function instanceof Function) // true
+      console.log(Object instanceof Object); // true
+      console.log(Function instanceof Object); // true
+      console.log(Object instanceof Function); // true
+      console.log(Function instanceof String); // false
+      console.log(String instanceof Object); // true
+      console.log(String instanceof Function); // true
+      console.log(String instanceof Number); // false
+      console.log(Array instanceof Number); // false
+      console.log(Number instanceof Array); // false
+      console.log(String instanceof Array); // false
+      console.log(Array instanceof Object); // true
+      console.log(Array instanceof Function); // true
+    }
+    // fun1();
+
+    var demo = function () {
+      // console.log(typeof this + ":" + this);
+    };
+    var demo2 = new demo();
+    console.log(demo.prototype === demo2.__proto__);
+    // console.log(demo.__proto__);
+    console.log(Function.prototype.__proto__);
+    console.log(Function.__proto__.__proto__);
+    console.log(Object.prototype.__proto__);
+    console.log(Object.__proto__);
+    console.log(Object.__proto__.__proto__);
+    console.log(Object.__proto__ === Function.prototype);
+    console.log(demo2.__proto__.__proto__ === Object.prototype);
+    
+    var oStringObject = "hello world";
+    console.log(oStringObject instanceof String); // 输出 "true"
+
+    demo3 = 'gg';
+
+  </script>
+</body>
+
+</html>

@@ -9,7 +9,7 @@ import { PrototypeComponent } from "./prototype.component";
         CommonModule,
         RouterModule.forChild([{
             path: '',
-            component: PrototypeComponent
+            component: PrototypeComponent,
         }])
     ],
     exports: [PrototypeComponent],

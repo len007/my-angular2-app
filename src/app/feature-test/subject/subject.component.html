@@ -37,7 +37,7 @@
         需要注意的是，PublishSubject可能会一创建完成就立刻开始发射数据（除非你可以阻止它发生）
         ，因此这里有一个风险：在Subject被创建后到有观察者订阅它之前这个时间段内，
         一个或多个数据可能会丢失。如果要确保来自原始Observable的所有数据都被分发，
-        你需要这样做：或者使用Create创建那个Observable以便手动给它引入”冷”Observable的
+        你需要这样做：或者使用Create创建那个Observable以便手动给它引入“冷”Observable的
         行为（当所有观察者都已经订阅时才开始发射数据），或者改用ReplaySubject。
       </p>
       <div class="img-span img1"></div>

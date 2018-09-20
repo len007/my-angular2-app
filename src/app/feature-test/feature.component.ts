@@ -19,6 +19,10 @@ export class FeatureComponent implements OnInit {
             // this.urlHelpObservable.setUrl('list');
         }, 2000);
     }
+    goEasyui(){
+        this.currentMenu = 'easyui';
+        this.router.navigate(['/feature/easyui']);
+    }
     goPrototype(){
         this.currentMenu = 'prototype';
         this.router.navigate(['/feature/prototype']);

@@ -8,6 +8,8 @@ export const FeatureRouterModule: Routes = [
         children: [{
             path: '', pathMatch: 'full', redirectTo: 'prototype'
         }, {
+            path: 'easyui', loadChildren: './easyui/easyui.module#EasyuiModule'
+        }, {
             path: 'prototype', loadChildren: './prototype/prototype.module#PrototypeModule'
         }, {
             path: 'subject', loadChildren: './subject/subject.module#SubjectModule'
