@@ -2,21 +2,6 @@ mark {
   background-color: #eee;
   color: red
 }
-.my-nav{
-    border-bottom: 1px dotted #000;
-}
-.my-nav span:hover,
-.current-menu {
-  cursor: pointer;
-  color: #56c3f6;
-}
-
-.my-nav span {
-  font-weight: bold;
-  display: inline-block;
-  padding: 5px 10px;
-  font-size: 16px;
-}
 .img-span{
     margin: 0 auto;
     width:700px;

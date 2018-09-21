@@ -1,3 +1,165 @@
-<section class="shared-content">
-    <p>ddf</p>
+<section class="shared-content easyui">
+  <header>
+    <nav class="my-nav">
+      <a class="icon-wrapper" (click)="clickOpen(i)" *ngFor="let tab of tabArray;let i = index;">
+        <span [ngClass]="{'current-menu':currentTab===i}">{{i+"."+tab}}</span></a>
+    </nav>
+  </header>
+  <br><br>
+  <fieldset *ngIf="currentTab===0">
+    <legend>Install</legend>
+    <h3>第一步：安装</h3>
+    复制粘贴/ng-easyui/components的文件夹到对应位置或者使用NPM Install。
+    <div class="codes">npm install ng-easyui --save-dev</div>
+    <h3>第二步：导入CSS</h3>
+    <div class="codes">
+      <p>@import '~ng-easyui/themes/material/easyui.css';
+      </p>
+      <p> @import '~ng-easyui/themes/angular.css';
+      </p>
+      <p>@import '~ng-easyui/themes/icon.css';</p>
+    </div>
+    <h3>第三步：导入主Module</h3>
+    <div class="codes">
+      <p>import {{"{"}} EasyUIModule {{"}"}} from 'node_modules/ng-easyui/components/easyui/easyui.module';</p>
+    </div>
+    <h3>第四步：导入需要使用的Module</h3>
+    <div class="codes">
+      <p>import {{"{"}} DataGridModule {{"}"}} from 'node_modules/ng-easyui/components/datagrid/datagrid.module';</p>
+    </div>
+  </fieldset>
+  <fieldset *ngIf="currentTab===1">
+    <legend>Accordion</legend>
+    <eui-accordion style="width: 300px;" [border]="false" [multiple]="true" [selectedIndex]="1" (panelSelect)="accordionPanelSelect($event)">
+      <eui-accordion-panel [title]="'标题一'" [selected]="false">
+        <p>Content1</p>
+      </eui-accordion-panel>
+      <eui-accordion-panel [title]="'标题二'" [selected]="false">
+        <p>Content2</p>
+      </eui-accordion-panel>
+      <eui-accordion-panel [title]="'标题三'" [selected]="true">
+        <p>Content3</p>
+      </eui-accordion-panel>
+    </eui-accordion>
+  </fieldset>
+  <fieldset *ngIf="currentTab===2">
+    <legend>ButtonGroup（和其他的Button组合使用）</legend>
+    <eui-button-group selectionMode="single">
+      <eui-linkbutton iconCls="icon-add" [toggle]="true" [selected]="true">添加</eui-linkbutton>
+      <eui-linkbutton iconCls="icon-remove" [toggle]="true">删除</eui-linkbutton>
+      <eui-linkbutton iconCls="icon-save" [toggle]="true">保存</eui-linkbutton>
+      <eui-linkbutton iconCls="icon-cut" [disabled]="true">剪切</eui-linkbutton>
+    </eui-button-group>
+  </fieldset>
+  <fieldset *ngIf="currentTab===3">
+    <legend>MenuButton</legend>
+    <eui-menubutton [menu]="help" [plain]="true" iconCls="icon-more">菜单</eui-menubutton>
+    <eui-menu #help (itemClick)="menuItemOnClick($event)">
+      <eui-menu-item value="asdf" text="New"></eui-menu-item>
+      <eui-menu-item text="Open">
+        <eui-submenu>
+          <eui-menu-item value="word" text="Word"></eui-menu-item>
+          <eui-menu-item value="excel" text="Excel"></eui-menu-item>
+          <eui-menu-item value="ppt" text="PowerPoint"></eui-menu-item>
+        </eui-submenu>
+      </eui-menu-item>
+      <eui-menu-item value="save" text="Save" iconCls="icon-save"></eui-menu-item>
+      <eui-menu-item value="print" text="Print" iconCls="icon-print" [disabled]="true"></eui-menu-item>
+      <eui-menu-sep></eui-menu-sep>
+      <eui-menu-item value="exit" iconCls="icon-reload" text="Exit"></eui-menu-item>
+    </eui-menu>
+    <p>按钮图标详见《icon.css》</p>
+  </fieldset>
+  <fieldset *ngIf="currentTab===4">
+    <legend>Calendar</legend>
+    <eui-calendar [(selection)]="calendarDate" style="width:250px;height:250px" (selectionChange)="calendarChange($event)"></eui-calendar>
+  </fieldset>
+  <fieldset *ngIf="currentTab===5">
+    <legend>CheckBox</legend>
+    <div *ngFor="let fruit of checkboxFruits" style="margin-bottom:10px">
+      <eui-checkbox [inputId]="fruit" [value]="fruit" [multiple]="true" [(ngModel)]="checkboxCheckedValues"
+        (checkedChange)="checkBoxOnChange($event)"></eui-checkbox>
+      <label [attr.for]="fruit">{{fruit}}</label>
+    </div>
+  </fieldset>
+  <fieldset *ngIf="currentTab===6">
+    <legend>DataGrid</legend>
+    <eui-datagrid [data]="datagrid" style="height:250px;width: 600px">
+      <eui-grid-column field="itemid" title="Item ID" [width]="'50px'"></eui-grid-column>
+      <eui-grid-column field="name" title="Name" [width]="'50px'"></eui-grid-column>
+      <eui-grid-column field="listprice" title="List Price" [width]="'50px'" align="right"></eui-grid-column>
+      <eui-grid-column field="unitcost" title="Unit Cost" [width]="'50px'" align="right"></eui-grid-column>
+      <eui-grid-column field="attr" title="Attribute" [width]="'50px'"></eui-grid-column>
+      <eui-grid-column field="status" title="Status" align="center"></eui-grid-column>
+    </eui-datagrid>
+  </fieldset>
+
+  <fieldset *ngIf="currentTab===7">
+    <legend>ComboBox</legend>
+    <eui-combobox placeholder="查找..." [(ngModel)]="comboboxValue" [data]="comboboxValues" [lazy]="true"
+      (selectionChange)="comboOnFilterChange($event)">
+    </eui-combobox>
+  </fieldset>
+  <fieldset *ngIf="currentTab===8">
+    <legend>comboTree</legend>
+    <eui-combotree [(ngModel)]="comboTreeValue" [data]="comboTreeValues" placeholder="Select a node">
+      <eui-tree></eui-tree>
+    </eui-combotree>
+  </fieldset>
+  <fieldset *ngIf="currentTab===9">
+    <legend>dateBox</legend>
+    <eui-datebox [(ngModel)]="dateboxValue" format="yyyy-MM-dd"></eui-datebox>
+  </fieldset>
+  <fieldset *ngIf="currentTab===10">
+    <legend>dateTimeSpinner</legend>
+    <label [for]="datetimespinner">时间微调器:</label>
+    <eui-datetimespinner #datetimespinner [(ngModel)]="datetimespinnerValue" [min]="'6/01/2015 20:23'" [max]="'6/30/2015 20:23'">
+    </eui-datetimespinner>
+  </fieldset>
+  <fieldset *ngIf="currentTab===11">
+    <legend>dateBox</legend>
+    <eui-dialog [title]="'这是标题'" [panelStyle]="{width:'400px',height:'200px'}" [modal]="true" [resizable]="true"
+      [draggable]="true" [closable]="true">
+      <p style="text-align:center;margin:50px 0;font-size:16px">这是内容</p>
+    </eui-dialog>
+  </fieldset>
+  <fieldset *ngIf="currentTab===12">
+    <legend> Draggable 与 Droppable </legend>
+    <section class="mydraggable">
+      <div #dds *ngFor="let item of draggables" class="dragitem mydragitem" euiDraggable [handle]="dds" [edge]="3"
+        [revert]="true" [proxy]="{'clone':true}">
+        {{item?.name}}
+      </div>
+    </section>
+    <section class="mydraggable-pad pull-left"> => </section>
+    <section class="mydraggable droparea" euiDroppable [class.over]="isover" [class.dropped]="dropped" (dragEnter)="droppableOnDragEnter($event)"
+      (dragLeave)="droppableOnDragLeave($event)" (drop)="droppableOnDrop($event)">
+    </section>
+    <p>PS:EasyUI 的拖放。。不太好用</p>
+  </fieldset>
+  <fieldset *ngIf="currentTab===13">
+    <legend>FileButton</legend>
+    <eui-filebutton [url]="'file/post'" (select)="fileButtonOnFileSelect($event)" style="padding:5px 10px;" (success)="fileButtonSuccess($event)"
+      (error)="fileButtonError($event)">选择文件</eui-filebutton>
+  </fieldset>
+  <fieldset *ngIf="currentTab===14">
+    <legend>Layout</legend>
+    <eui-layout style="width:700px;height:250px;">
+      <eui-layout-panel region="north" style="height:50px;">
+        <div class="title">North Region</div>
+      </eui-layout-panel>
+      <eui-layout-panel region="south" style="height:50px;">
+        <div class="title">South Region</div>
+      </eui-layout-panel>
+      <eui-layout-panel region="west" style="width:120px;">
+        <div class="title">West Region</div>
+      </eui-layout-panel>
+      <eui-layout-panel region="east" style="width:120px;">
+        <div class="title">East Region</div>
+      </eui-layout-panel>
+      <eui-layout-panel region="center" style="height:100%">
+        <div class="title">Center Region</div>
+      </eui-layout-panel>
+    </eui-layout>
+  </fieldset>
 </section>
