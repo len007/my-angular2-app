@@ -88,22 +88,13 @@ export class AppComponent implements OnInit, AfterContentChecked {
     let downloadUrl = $('#downloadUrl').val();
     let nowTime = this.formatterDate(this.selectDateTime);
     downloadUrl = downloadUrl + "?nowTime=" + nowTime;
-    this.http.get(downloadUrl, { responseType: 3 }).subscribe(res => {
-      let data = res.json();
-      var blob = new Blob([data], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
-      var objectUrl = URL.createObjectURL(blob);
-      var a = document.createElement('a');
-      document.body.appendChild(a);
-      a.setAttribute('style', 'display:none');
-      a.setAttribute('href', objectUrl);
-      a.setAttribute('download', 'excle文件');
-      a.click();
-      document.body.removeChild(a);
-      //释放URL地址
-      URL.revokeObjectURL(objectUrl);
-    }, error => {
-      alert('系统繁忙，请稍后再试！');
-    });
+    var a = document.createElement('a');
+    document.body.appendChild(a);
+    a.setAttribute('style', 'display:none');
+    a.setAttribute('href', downloadUrl);
+    a.setAttribute('download', 'data.csv');
+    a.click();
+    document.body.removeChild(a);
   }
   // 根据日期查询
   searchForTime() {
@@ -146,7 +137,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
     let options = new RequestOptions({ headers: headers });
     this.http.post(uploadUrl.toString(), fm, options).subscribe(res => {
       let result = res.json();
-      if (result['code']==='1') {
+      if (result['code'] === '1') {
         alert('上传成功');
       } else {
         alert('上传失败，请稍后再试！');
@@ -197,7 +188,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
     var url = text.replace(/\/#/, "/index.html#");
     window.history.pushState({}, "0", url);
   }
-  ngAfterContentChecked(){
+  ngAfterContentChecked() {
     this.changeURL();
   }
   ngOnInit() {
