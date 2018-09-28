@@ -162,4 +162,32 @@
       </eui-layout-panel>
     </eui-layout>
   </fieldset>
+  <fieldset *ngIf="currentTab===15">
+    <legend>ProgressBar</legend>
+    <div style="margin-bottom:20px">
+      <eui-progressbar value="40" [showValue]="true"></eui-progressbar>
+    </div>
+    <div style="margin-bottom:20px">
+      <eui-progressbar value="70" [showValue]="false">Processing 70%</eui-progressbar>
+    </div>
+    <div style="margin-bottom:20px">
+      <div style="text-align:right">50%</div>
+      <eui-progressbar value="50" [showValue]="false" barCls="c6" style="height:4px"></eui-progressbar>
+    </div>
+  </fieldset>
+  <fieldset *ngIf="currentTab===16">
+    <legend>NumberBox</legend>
+    <div style="margin-bottom:10px">
+      <label [for]="n1" align="top">Amount:</label>
+      <eui-numberbox #n1 value="100" [spinners]="true"></eui-numberbox>
+    </div>
+    <div style="margin-bottom:10px">
+      <label [for]="n2" align="top">List Price:</label>
+      <eui-numberbox #n2 value="234.56" precision="2" [spinners]="false"></eui-numberbox>
+    </div>
+    <div style="margin-bottom:10px">
+      <label [for]="n3" align="top">Discount:</label>
+      <eui-numberbox #n3 value="60" suffix="%" [spinners]="false"></eui-numberbox>
+    </div>
+  </fieldset>
 </section>

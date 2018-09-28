@@ -37,6 +37,10 @@ import { FileButtonModule } from 'node_modules/ng-easyui/components/filebutton/f
 
 import { LayoutModule } from 'node_modules/ng-easyui/components/layout/layout.module';
 
+import { ProgressBarModule } from 'node_modules/ng-easyui/components/progressbar/progressbar.module';
+
+import { NumberBoxModule } from 'node_modules/ng-easyui/components/numberbox/numberbox.module';
+
 
 @NgModule({
     imports: [
@@ -56,6 +60,8 @@ import { LayoutModule } from 'node_modules/ng-easyui/components/layout/layout.mo
         DraggableModule, DroppableModule,
         FileButtonModule,
         LayoutModule,
+        ProgressBarModule,
+        NumberBoxModule,
         RouterModule.forChild([{
             path: '',
             component: EasyuiComponent

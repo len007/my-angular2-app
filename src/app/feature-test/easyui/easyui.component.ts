@@ -7,7 +7,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 })
 export class EasyuiComponent implements OnInit {
     tabArray: Array<any>;
-    currentTab: number = 14;
+    currentTab: number = 15;
     datagrid: any;
     calendarDate: Date;
     checkboxFruits: any;
@@ -57,7 +57,7 @@ export class EasyuiComponent implements OnInit {
             '数据表格', '下拉框', '下拉树',
             '日期框', '时间微调', '对话框',
             '拖拽', '文件框', '布局',
-            '', '', '',
+            '进度条', '数字调整器', '',
             '', '', '',
         ]
         this.calendarDate = new Date();
