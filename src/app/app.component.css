@@ -1,18 +1,9 @@
-a.icon-wrapper {
-  color: #333 !important;
-  text-decoration: none !important;
-}
-
-a.icon-wrapper span {
-  display: inline-block;
-  vertical-align: middle;
-}
-
 .navigate-bar {
-  background-color: #f5f5f5;
   text-align: right;
-  padding: 0px 10px;
   height: 50px;
+  color: #fff;
+  width: 80%;
+  margin-left: 10%;
 }
 
 .navbar-brand {
@@ -42,7 +33,7 @@ a.icon-wrapper span {
 
 .login-btn:hover,
 .login-btn-hover {
-  color: #fff;
+  color: #bababa;
   cursor: pointer;
 }
 
@@ -129,13 +120,16 @@ a.icon-wrapper span {
 .form-submit-disabled:hover {
   background-color: #de615e;
 }
+
 .search-bar {
-  margin: 20px auto;
+  margin: 0px auto;
+  margin-bottom: 10px;
   width: 80%;
   height: 100px;
-  background-color: rgb(245, 245, 245);
+  background-color: rgb(234, 245, 255);
   border-radius: 5px;
   padding: 10px 20px;
+  border: 1px solid rgba(27, 31, 35, 0.15);
 }
 
 .div-group {
@@ -246,31 +240,54 @@ a.icon-wrapper span {
 .list-content {
   margin: 0 auto;
   width: 80%;
-  height: calc(100% - 270px);
+  height: 510px;;
   background-color: rgb(245, 245, 245);
   border-radius: 5px;
-  padding: 20px 20px;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  overflow-y: scroll;
 }
 
 .my-table {
   width: 100%;
   text-align: center;
-  color: #000;
+  color: #05264c;
 }
 
 .list-row-header {
   font-weight: bold;
+  background-color: rgb(234, 245, 255);
+  border: 1px solid rgba(27, 31, 35, 0.15);
+}
+
+.list-row-header td {
+  border-bottom: 1px solid rgba(27, 31, 35, 0.15);
+  height: 50px;
+  border-right: 1px solid rgba(27, 31, 35, 0.15);
+}
+
+.list-row-header td:last-child {
+  border-right: 0px solid rgba(27, 31, 35, 0.15);
 }
 
 .list-row {
   font-size: 14px;
 }
 
-.list-cell {
+.list-row td {
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-.font-size-14{
-  font-size:14px;
+.list-row-double td {
+  background: rgb(234, 245, 255);
+  height: 30px;
+}
+
+.list-row-single td {
+  background: #bef5cb;
+  height: 30px;
+}
+
+.font-size-14 {
+  font-size: 14px;
 }

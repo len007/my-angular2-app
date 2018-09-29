@@ -1,4 +1,4 @@
-<div>
+<div style="background-color: rgb(234, 245, 255);">
   <div class="navigate-bar">
     <a class="pull-left icon-wrapper">
       <span class="navbar-brand">一账通外呼自助查询系统</span>
@@ -18,7 +18,7 @@
   </div>
 </div>
 <!-- 试试 -->
-<section *ngIf="isLogin" style="min-height: 610px;">
+<section class="body-bg2" *ngIf="isLogin">
   <div class="search-bar">
     <div class="div-group">
       <form id="orgin" #orginForm method="POST" enctype="multipart/form-data" name="orginForm" class="formStyle">
@@ -46,7 +46,7 @@
       <br />
     </div>
     <div class="clear-fix"></div>
-    <div class="div-group margin-top-10 font-size-14">
+    <div class="margin-top-10 font-size-14 pull-right">
       <a (click)="chagePageBefore()" class="pagination-btn" [ngClass]="{ 'disabled':(pages?.pageNo < 2)}">上一页</a>
       <input [(ngModel)]="inputPageNo" type="input" (keyup.enter)="chagePages()" class="pagination-btn pagination-input">
       <a class="icon-wrapper pagination-total" title="总页数">/&nbsp;{{pages?.maxPageNo}}</a>
@@ -56,21 +56,41 @@
   <section class="list-content">
     <table class="my-table">
       <tr class="list-row-header">
-        <td>记录号</td>
-        <td>拨打时间</td>
-        <td>联系方式</td>
-        <td>联系客户次数</td>
+        <td>手机号</td>
+        <td>年龄</td>
+        <td>城市</td>
+        <td>业务主键</td>
         <td>拨打结果</td>
+        <td>信用卡</td>
+        <td>还房贷</td>
+        <td>还车贷</td>
+        <td>房产情况</td>
+        <td>居住时间</td>
+        <td>车</td>
+        <td>寿险保单</td>
+        <td>是否是投保人</td>
+        <td>月保费合计</td>
+        <td>筛选备注</td>
       </tr>
-      <tr class="list-row" *ngFor="let item of items">
-        <td class="list-cell">{{item?.recordId}}</td>
-        <td class="list-cell">{{item?.callTime}}</td>
-        <td class="list-cell">{{item?.contactInfo}}</td>
-        <td class="list-cell">{{item?.attempt}}</td>
-        <td class="list-cell">{{item?.visitResult}}</td>
+      <tr class="font-size-14" *ngFor="let item of items;let i=index;" [ngClass]="{'list-row-single':i%2==0,'list-row-double':i%2==1}">
+        <td>{{item?.contactInfo}}</td>
+        <td>{{item?.age}}</td>
+        <td>{{item?.city}}</td>
+        <td>{{item?.businesskeyId}}</td>
+        <td>{{item?.visitResult}}</td>
+        <td>{{item?.hasCreditCard==='Y'?'有':'无'}}</td>
+        <td>{{item?.has_Mortgage==='Y'?'是':'否'}}</td>
+        <td>{{item?.hasCarLoan==='Y'?'是':'否'}}</td>
+        <td>{{item?.habitation}}</td>
+        <td>{{item?.residentPeriod}}</td>
+        <td>{{item?.isCar==='Y'?'有':'无'}}</td>
+        <td>{{item?.isLifeInserance==='Y'?'有':'无'}}</td>
+        <td>{{item?.isApplication==='Y'?'是':'否'}}</td>
+        <td>{{item?.monthInsuranceTotal}}</td>
+        <td>{{item?.filterRemark}}</td>
       </tr>
       <tr *ngIf="pages?.total === 0">
-        <td colspan="5"><span class="no-data"></span></td>
+        <td colspan="15"><span class="no-data"></span></td>
       </tr>
     </table>
   </section>
@@ -96,8 +116,6 @@
     </div>
   </div>
 </div>
-
-<!-- <app-list *ngIf="isLogin"></app-list> -->
 <div style="width:100%;height:40px;text-align:center;line-height: 40px;">
   @Copyright 平安科技.智能语音组.Design. All rights reserved.
 </div>

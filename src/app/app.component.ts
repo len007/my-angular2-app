@@ -197,5 +197,11 @@ export class AppComponent implements OnInit, AfterContentChecked {
     if (this.isLogin) {
       this.searchForTime()
     }
+    // this.items = [{
+    //   recordId: 1, callTime: 2, contactInfo: 3, attempt: 4, visitResult: 5,filterRemark:'asdfasdfajsldfjaslkdfjlasdjflsad'
+    // },{
+    //   recordId: 1, callTime: 2, contactInfo: 3, city: '业务主键	业务主键	业务主键	业务主键	业务主键	业务主键	业务主键	业务主键	业务主键	', visitResult: 5,filterRemark:'asdfasdfajsldfjaslkdfjlasdjflsad'
+    // }];
+    // this.pages.total = this.items.length;
   }
 }
