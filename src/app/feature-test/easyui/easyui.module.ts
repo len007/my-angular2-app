@@ -27,6 +27,9 @@ import { ComboTreeModule } from 'node_modules/ng-easyui/components/combotree/com
 import { DateBoxModule } from 'node_modules/ng-easyui/components/datebox/datebox.module';
 
 import { DateTimeSpinnerModule } from 'node_modules/ng-easyui/components/datetimespinner/datetimespinner.module';
+import { PanelModule } from 'node_modules/ng-easyui/components/panel/panel.module';
+import { TimeSpinnerModule } from 'node_modules/ng-easyui/components/timespinner/timespinner.module';
+
 
 import { DialogModule } from 'node_modules/ng-easyui/components/dialog/dialog.module';
 
@@ -55,7 +58,7 @@ import { NumberBoxModule } from 'node_modules/ng-easyui/components/numberbox/num
         ComboBoxModule,
         TreeModule, ComboTreeModule,
         DateBoxModule,
-        DateTimeSpinnerModule,
+        DateTimeSpinnerModule, PanelModule, TimeSpinnerModule,
         DialogModule,
         DraggableModule, DroppableModule,
         FileButtonModule,

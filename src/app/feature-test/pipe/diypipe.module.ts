@@ -12,6 +12,7 @@ import { DiyMyPipePipe } from './diypipe'
         }])
     ],
     declarations: [ DiypipeComponent ,DiyMyPipePipe],
-    exports: [ DiypipeComponent,DiyMyPipePipe ]
+    exports: [ DiypipeComponent,DiyMyPipePipe ],
+    providers: [DiyMyPipePipe]
 })
 export class DiypipeModule { }
