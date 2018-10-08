@@ -15,5 +15,18 @@ export class PrototypeComponent implements OnInit{
 
         let s2 = 'a';
         console.log(typeof s2);
+
+        let s3 = '123456789';
+        console.log(s3.slice(1));
+        console.log(s3);
+
+        function Test(){
+            this.oute = function(){
+                console.log(this);
+            }
+        }
+        Test.prototype = new String('aaa');
+        let test2 = new Test();
+        console.log(test2);
     }
 }
