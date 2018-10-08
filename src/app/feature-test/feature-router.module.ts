@@ -6,7 +6,7 @@ export const FeatureRouterModule: Routes = [
         path: '',
         component: FeatureComponent,
         children: [{
-            path: '', pathMatch: 'full', redirectTo: 'easyui'
+            path: '', pathMatch: 'full', redirectTo: 'prototype'
         }, {
             path: 'easyui', loadChildren: './easyui/easyui.module#EasyuiModule'
         }, {
