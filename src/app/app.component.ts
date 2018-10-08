@@ -9,11 +9,11 @@ import * as $ from 'jquery';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, AfterContentChecked {
-  isLogin: boolean = false;
+  isLogin: boolean = true;
   isLoging: boolean = true;
   userName: String = '';
   passWord: String = '';
-  downloadDataOneTimes: boolean = true;
+  uploadDataOneTimes: boolean = true;
   selectDateTime: Date;
   nowDate: Date;
   fileName: String = '';
@@ -84,7 +84,6 @@ export class AppComponent implements OnInit, AfterContentChecked {
       alert('不支持下载当天及以后的数据！');
       return;
     }
-    this.downloadDataOneTimes = false;
     let downloadUrl = $('#downloadUrl').val();
     let nowTime = this.formatterDate(this.selectDateTime);
     downloadUrl = downloadUrl + "?nowTime=" + nowTime;
@@ -125,6 +124,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.fileName = event.target.value;
   }
   uploadFileAction() {
+    this.uploadDataOneTimes = false;
     let uploadUrl = $('#uploadUrl').val();
     var mark = this.orginForm.nativeElement.mark.value;
     var file = this.orginForm.nativeElement.file.files[0];
@@ -142,8 +142,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
       } else {
         alert('上传失败，请稍后再试！');
       }
+      this.uploadDataOneTimes = true;
     }, error => {
       alert('系统繁忙，请稍后再试！');
+      this.uploadDataOneTimes = true;
     });
   }
   getMaxPageNo() {
@@ -193,6 +195,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
   ngOnInit() {
     this.isLogin = sessionStorage.getItem('isLogin') === 'true' ? true : false;
+    this.isLogin = true;
     this.userName = sessionStorage.getItem('userName') ? sessionStorage.getItem('userName') : '';
     if (this.isLogin) {
       this.searchForTime()

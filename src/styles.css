@@ -24,7 +24,7 @@ body {
 
 .body-bg2 {
   width: 100%;
-  height: auto;
+  height: calc(100% - 90px);
   background-image: url('assets/css/images/body-bg.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;

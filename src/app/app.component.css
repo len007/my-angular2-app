@@ -8,7 +8,7 @@
 
 .navbar-brand {
   font-size: 18px;
-  padding: 6px 30px;
+  padding: 6px 30px 6px 12px;
   line-height: 38px;
   font-weight: bold;
   cursor: text;
@@ -240,11 +240,12 @@
 .list-content {
   margin: 0 auto;
   width: 80%;
-  height: 510px;;
+  min-height: 470px;
   background-color: rgb(245, 245, 245);
   border-radius: 5px;
   border: 1px solid rgba(27, 31, 35, 0.15);
   overflow-y: scroll;
+  height: calc(100% - 120px);
 }
 
 .my-table {
