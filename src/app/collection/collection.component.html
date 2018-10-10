@@ -1,4 +1,4 @@
-<div class="main-content">
+<div class="list-content">
   <div class="list-menu fn-clear-float">
     <a class="icon-wrapper pull-right margin-right-20" (click)="goAdd()">
       <span class="add-contract-icon"></span></a>
@@ -6,15 +6,15 @@
   <table class="my-table">
     <tr [id]="collection?.id" *ngFor="let collection of collections">
       <td>
-        <a (click)="goDetail(collection?.id)" class="icon-wrapper pull-left margin-left-20">
+        <a (click)="goDetail(collection?.id)" class="icon-wrapper">
           <span class="user-icon"></span>
         </a>
       </td>
       <td>
-        <a (click)="goDetail(collection?.id)" class="user-name margin-left-20">{{collection?.name}}</a>
+        <a (click)="goDetail(collection?.id)" class="user-name ">{{collection?.name}}</a>
       </td>
-      <td><span class="user-tel margin-left-20">{{collection?.telNum}}</span></td>
-      <td><span class="user-email margin-left-20">{{collection?.email}}</span></td>
+      <td><span class="user-tel ">{{collection?.telNum}}</span></td>
+      <td><span class="user-email ">{{collection?.email}}</span></td>
       <td><a (click)="collecting(collection?.id)" class="icon-wrapper" title="{{collection?.collection?'取消收藏':'收藏'}}">
           <span class="user-collection" [ngClass]="{'collected': collection?.collection,'uncollected': !collection?.collection}"></span>
         </a></td>

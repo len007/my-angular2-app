@@ -1,18 +1,109 @@
 <section class="shared-content">
-  <div class="gradient"></div>
-  <fieldset>
+  <header>
+    <nav class="my-nav">
+      <a class="icon-wrapper" (click)="clickOpen(i)" *ngFor="let tab of tabArray;let i = index;">
+        <span [ngClass]="{'current-menu':currentTab===i}">{{i+"."+tab}}</span></a>
+    </nav>
+  </header>
+  <fieldset *ngIf="currentTab===0">
     <legend>
       transform
     </legend>
-
     <div class="polaroid rotate-left">
       <img src="assets/img/css3/ballade_dream.jpg" alt="郁金香" width="142" height="106" />
       <p class="caption">上海鲜花港的郁金香，花名：Ballade Dream。</p>
     </div>
-
     <div class="polaroid rotate-right">
       <img src="assets/img/css3/china_pavilion.jpg" alt="世博中国馆" width="142" height="106" />
       <p class="caption">2010年上海世博会，中国馆。</p>
     </div>
+  </fieldset>
+  <fieldset class="container0" *ngIf="currentTab ===1">
+    <article>
+      <p>取代我们之前“display+float+position”的布局形式，采用全新的弹性布局</p>
+      <p>弹性布局，又称“Flex布局”，已经得到所有主流浏览器的支持</p>
+      <p>两个概念（容器，项目），两个方向（主轴，交叉轴）</p>
+    </article>
+    <fieldset>
+      <legend>容器（父容器有六大属性）</legend>
+      <section class="container01">
+        <article style="background: indianred">
+          <strong>flex-direction</strong> 决定主轴方向，即项目的排列方向。值有：
+          <ol>
+            <li>row（默认值）： 主轴为水平方向，起点在左端</li>
+            <li>row-reverse： 主轴在水平方向，起点在右端 </li>
+            <li>column：主轴为垂直方向，起点在上沿</li>
+            <li>column-reverse：主轴为垂直方向，起点在下沿</li>
+          </ol>
+        </article>
+        <article style="background:goldenrod">
+          <strong>flex-wrap</strong> 决定轴线排列不下该如何换行。值有：
+          <ol>
+            <li>nowrap（默认）：不换行。当容器宽度不够时，每个项目会被挤压宽度</li>
+            <li>wrap： 换行，并且第一行在容器最上方</li>
+            <li>wrap-reverse： 换行，并且第一行在容器最下方</li>
+          </ol>
+        </article>
+        <article style="background:dodgerblue">
+          <strong>flex-flow</strong> 是flex-direction和flex-wrap的缩写形式，默认值为：flex-flow: row wrap; 不做过多解释
+        </article>
+        <article style="background:darksalmon">
+          <strong>justify-content</strong> 定义了项目在主轴上的对齐方式。此属性与主轴方向息息相关。值有：
+          <ol>
+            <li>flex-start（默认值）： 项目位于主轴起点</li>
+            <li>flex-end：项目位于主轴终点</li>
+            <li>center： 居中</li>
+            <li>space-between：两端对齐，项目之间的间隔都相等。(开头和最后的项目，与父容器边缘没有间隔)</li>
+            <li>space-evenly：两端对齐，边框、项目之间的间隔都相等</li>
+            <li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。(开头和最后的项目，与父容器边缘有一定的间隔)</li>
+          </ol>
+        </article>
+        <article style="background:darkcyan">
+          <strong>align-items</strong> 定义项目在交叉轴上如何对齐。值有：
+          <ol>
+            <li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度</li>
+            <li>flex-start：交叉轴的起点对齐</li>
+            <li>flex-end：交叉轴的终点对齐</li>
+            <li>center：交叉轴的中点对齐</li>
+            <li>baseline: 项目的第一行文字的基线对齐。(文字的行高、字体大小会影响每行的基线)</li>
+          </ol>
+        </article>
+        <article style="background:chartreuse">
+          <strong>align-content</strong> 定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。值有：
+          <ol>
+            <li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度</li>
+            <li>flex-start：交叉轴的起点对齐</li>
+            <li>flex-end：交叉轴的终点对齐</li>
+            <li>center：交叉轴的中点对齐</li>
+            <li>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布</li>
+            <li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍</li>
+          </ol>
+        </article>
+      </section>
+    </fieldset>
+    <fieldset>
+      <legend>项目（作用于子项目的六大属性）</legend>
+      <section class="container01">
+        <article style="background:chartreuse">
+          <strong>order</strong> 属性定义项目的排列顺序。数值越小，排列越靠前，默认为0
+        </article>
+        <article style="background:bisque">
+          <strong>flex-grow</strong> 定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大
+        </article>
+        <article style="background:darkgray">
+          <strong>flex-shrink</strong> 属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小
+        </article>
+        <article style="background:darkgoldenrod">
+          <strong>flex-basis</strong> 定义项目占据的主轴空间。(如果主轴为水平，则设置这个属性，相当于设置项目的宽度。 原width将会失效。)
+        </article>
+        <article style="background:coral">
+          <strong>flex</strong> 属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选
+        </article>
+        <article style="background:chartreuse">
+          <p><strong>align-self</strong> 定义单个项目自身在交叉轴上的排列方式，可以覆盖掉容器上的align-items属性。</p>
+          <p>属性值：与align-items相同，默认值为auto，表示继承父容器的align-items属性值</p>
+        </article>
+      </section>
+    </fieldset>
   </fieldset>
 </section>

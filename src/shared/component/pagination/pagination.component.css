@@ -1,9 +1,10 @@
 .pagination-box{
-    position: absolute;
-    margin-top: 20px;
-    right: 20px;
-    font-size: 14px;
-    bottom: 20px;
+    font-size: .8rem;
+    margin: 1rem;
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .pagination-btn{

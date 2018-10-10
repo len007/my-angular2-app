@@ -2,38 +2,50 @@
 @import '~ng-easyui/themes/angular.css';
 @import '~ng-easyui/themes/icon.css';
 
+html {
+  min-height: 700px;
+}
+
 html,
 body {
-  margin: 0;
-  padding: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
   font-family: "Helvetica Neue", Helvetica, Tahoma, sans-serif;
 }
 
 .app-content {
-  width: 100%;
-  height: 100%;
-  background: url(../img/bg.jpg);
+  background: url('../img/bg.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  min-height: 700px;
-  min-width: 1200px;
+  width: 100%;
+  height: 100%;
 }
 
 .main-content {
-  width: calc(100% - 40px);
-  min-height: 620px;
-  position: relative;
-  margin: 0px 20px 20px 20px;
+  margin: 0px 20px;
   background-color: #eee;
-  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  height: calc(100% - 4.2rem);
 }
 
-.list-menu {
-  width: 60%;
-  height: 40px;
-  margin-left: 20%;
+.list-content {
+  margin: 0px 20px;
+  border-radius: 5px;
+  height: calc(100% - 4.2rem);
+  background-color: #eee;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .my-table {
@@ -182,23 +194,91 @@ a.icon-wrapper span {
   width: 100%;
 }
 
-.add-contract-icon {
+.form-control {
+  margin: 0 auto;
+  text-align: center;
+  border: #000 dotted 1px;
+  height: 300px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.go-back-icon {
+  margin: .8rem;
+  border: #000 dotted 1px;
+  border-radius: 50%;
+  align-self: flex-end;
+}
+
+.go-back-icon span {
+  background-image: url(../img/back.png);
+  background-repeat: no-repeat;
   width: 32px;
   height: 32px;
-  background-image: url(../../assets/img/userIcon/add-user.png);
-  background-repeat: no-repeat;
-  border-radius: 50%;
-  margin-top: 4px;
   background-position-x: 4px;
   background-position-y: 4px;
 }
 
-.add-contract-icon:hover {
+.go-back-icon:hover,
+.go-back-icon:active {
   background-color: rgba(0, 0, 0, .2);
   cursor: pointer;
 }
 
-.add-contract-icon:active {
+.form-input {
+  width: 180px;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  background-color: rgba(47, 183, 247, 0);
+  padding: 0 12px;
+  display: block;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.form-group-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.form-span {
+  display: block;
+  float: left;
+  font-size: 18px;
+  height: 30px;
+  line-height: 30px;
+  text-align: left;
+  width: 50px;
+}
+
+.form-span-options {
+  width: 80px;
+}
+
+.add-contract-icon {
+  margin: .8rem;
+  border: #000 dotted 1px;
+  border-radius: 50%;
+  align-self: flex-end;
+}
+
+.add-contract-icon span {
+  width: 32px;
+  height: 32px;
+  background-image: url(../img/userIcon/add-user.png);
+  background-repeat: no-repeat;
+  background-position-x: 4px;
+  background-position-y: 4px;
+}
+
+.add-contract-icon:active,
+.add-contract-icon:hover {
   background-color: rgba(0, 0, 0, .2);
   cursor: pointer;
 }
@@ -206,7 +286,7 @@ a.icon-wrapper span {
 .user-icon {
   height: 32px;
   width: 32px;
-  background-image: url(../../assets/img/userIcon/default-user.png);
+  background-image: url(../img/userIcon/default-user.png);
   background-repeat: no-repeat;
   border-radius: 50%;
   background-position-x: 4px;
@@ -219,16 +299,14 @@ a.icon-wrapper span {
 }
 
 .required-tips {
-  background-image: url('../../assets/img/required.png');
+  background-image: url('../img/required.png');
   background-repeat: no-repeat;
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  position: absolute;
-  top: 3px;
-  right: 15px;
   background-position-x: 4px;
   background-position-y: 4px;
+  margin-top: 3px;
 }
 
 .margin-auto {
@@ -240,12 +318,13 @@ a.icon-wrapper span {
 }
 
 .shared-content {
-  float: right;
-  width: calc(100% - 140px);
-  overflow-x: auto;
-  font-size: 14px;
+  font-size: .8rem;
   margin-top: 20px;
   background-color: #ececec;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .cursor-pointer {
@@ -305,5 +384,3 @@ a.icon-wrapper span {
   padding: 5px 10px;
   font-size: 16px;
 }
-
-

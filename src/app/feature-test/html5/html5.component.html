@@ -10,7 +10,7 @@
   <article>iiiii<mark>BBB</mark>iiii</article>
   <fieldset style="text-align:center;">
     <legend>对着Video右键有弹窗么？</legend>
-    <video id="myVideo" #myVideo [controls]="controls" [width]="videoWidth" style="margin-top:15px;" (contextmenu)="nomenu($event)">
+    <video id="myVideo" #myVideo [controls]="controls" width="100%" style="margin-top:15px;" (contextmenu)="nomenu($event)">
       <source src="data/html5-1.mp4" type="video/mp4" />
       <source src="data/html5-1.mp4" type="video/ogg" />
       您的浏览器不支持 HTML5 video.

@@ -7,7 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class Css3Component implements OnInit {
+    tabArray: Array<any>;
+    currentTab:number = 1;
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.tabArray = [
+            'transform', 'Flex'
+        ]
+    }
+    clickOpen(i){
+        this.currentTab = i;
+    }
 }

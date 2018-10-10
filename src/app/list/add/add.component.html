@@ -1,27 +1,34 @@
-<div class="main-content">
-  <div class="list-menu fn-clear-float">
-    <a class="icon-wrapper pull-right margin-right-10" (click)="goList()" title="返回列表">
-      <span class="go-back-icon"></span>
-    </a>
-  </div>
+<div class="list-content">
+  <a class="icon-wrapper go-back-icon" (click)="goList()" title="返回列表">
+    <span></span>
+  </a>
   <form class="form-control" (ngSubmit)="onSubmit()" role="form" #f="ngForm">
     <div class="form-group">
       <span class="form-span">姓名</span>
-      <input required class="form-input" name="name" type="text" [(ngModel)]="contact.name" placeholder="请输入姓名" />
+      <input required class="form-input" name="name" type="text" [(ngModel)]="contact.name" placeholder="请输入姓名" pattern="[a-zA-Z0-9]{3,15}" />
       <a class="icon-wrapper" title="必选">
-        <span class="required-tips"></span></a>
+        <span class="required-tips"></span>
+      </a>
+      
     </div>
     <div class="form-group">
       <span class="form-span">手机</span>
-      <input required class="form-input" name="telNum" type="text" [(ngModel)]="contact.telNum" placeholder="请输入手机号" />
+      <input required class="form-input" name="telNum" type="text" [(ngModel)]="contact.telNum" placeholder="请输入手机号"
+        pattern="[1-9][0-9]{10}" />
       <a class="icon-wrapper" title="必选">
         <span class="required-tips"></span></a>
     </div>
     <div class="form-group">
       <span class="form-span">邮箱</span>
-      <input required class="form-input" name="email" type="text" [(ngModel)]="contact.email" placeholder="请输入电子邮箱" />
+      <input required class="form-input" name="email" type="email" [(ngModel)]="contact.email"
+      list="emaillist"  placeholder="请输入电子邮箱" />
       <a class="icon-wrapper" title="必选">
         <span class="required-tips"></span></a>
+        <datalist id="emaillist">
+          <option value="2422082778@qq.com">我</option>
+          <option value="2763340192@qq.com">你</option>
+          <option value="1962966607@qq.com">它</option>
+        </datalist>
     </div>
     <div *ngIf="!moreOptions?.birthday[1]" class="form-group">
       <span class="form-span">生日</span>
@@ -38,10 +45,6 @@
       </a>
     </div>
     <div class="form-group">
-      <input class="btn-success margin-right-10" type="submit" value="确定" />
-      <input class="btn-cancel" type="button" value="取消" (click)="goList()" />
-    </div>
-    <div class="form-group-options">
       <span class="form-span form-span-options">其他选项</span>
       <select name='options' (ngModel)="addedOption" (ngModelChange)="addOption($event)">
         <option selected [value]="'default'">请选择</option>
@@ -49,5 +52,10 @@
         <option *ngIf="moreOptions?.address[1]" [value]="'address'">{{moreOptions?.address[0]}}</option>
       </select>
     </div>
+    <div class="form-group-options">
+      <input class="btn-success" type="submit" value="确定" />
+      <input class="btn-cancel" type="button" value="取消" (click)="goList()" />
+    </div>
+
   </form>
 </div>

@@ -1,7 +1,7 @@
 .header-box{
-    width: 100%;
-    height: 60px;
-    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .header-center {
@@ -11,16 +11,12 @@
 }
 
 .contacts-link{
-    display: inline-block;
     font-size: 1.2em;
-    width: 5rem;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
+    padding: .6em;
     font-weight: normal;
-    margin-top: 10px;
     text-decoration: none;
     color: #fff;
+    margin: .4em;
 }
 .contacts-link:hover , .contacts-link-current{
     cursor: pointer;

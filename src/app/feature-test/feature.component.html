@@ -1,6 +1,6 @@
 <!-- Angular特性 -->
 <div class="main-content">
-  <nav>
+  <nav class="mynav">
     <p><b>Angular特性</b></p>
     <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='easyui'}" (click)="goEasyui()">EasyUI</a>
     <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='prototype'}" (click)="goPrototype()">原型链</a>
@@ -15,7 +15,7 @@
     <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='directive'}" (click)="goDirective()">指令</a>
     <a class="feature-btn" [ngClass]="{'current-menu': currentMenu ==='service'}" (click)="goService()">服务</a>
   </nav>
-  <section>
+  <section class="myfeature">
     <router-outlet></router-outlet>
   </section>
 </div>
