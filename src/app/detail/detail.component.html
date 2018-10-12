@@ -24,12 +24,12 @@
     </div>
     <div class="form-group">
       <span class="form-span">生日</span>
-      <input class="form-input" name="birthday" type="text" [(ngModel)]="contact.birthday" placeholder="请输入生日"
+      <input class="form-input" name="birthday" type="text" [(ngModel)]="contact.birthday" [placeholder]="isEdit?'请输入生日':''"
         [disabled]="!isEdit" />
     </div>
     <div class="form-group">
       <span class="form-span">地址</span>
-      <input class="form-input" name="address" type="text" [(ngModel)]="contact.address" placeholder="请输入地址" [disabled]="!isEdit" />
+      <input class="form-input" name="address" type="text" [(ngModel)]="contact.address"  [placeholder]="isEdit?'请输入地址':''" [disabled]="!isEdit" />
     </div>
     <div class="form-group-options" *ngIf="isEdit">
       <input class="btn-success" type="submit" value="确定" />

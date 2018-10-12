@@ -15,7 +15,7 @@
       </td>
       <td><span class="user-tel ">{{collection?.telNum}}</span></td>
       <td><span class="user-email ">{{collection?.email}}</span></td>
-      <td><a (click)="collecting(collection?.id)" class="icon-wrapper" title="{{collection?.collection?'取消收藏':'收藏'}}">
+      <td><a (click)="uncollecting(collection?.id)" class="icon-wrapper" title="{{collection?.collection?'取消收藏':'收藏'}}">
           <span class="user-collection" [ngClass]="{'collected': collection?.collection,'uncollected': !collection?.collection}"></span>
         </a></td>
     </tr>
