@@ -11,12 +11,14 @@ import { FormsModule } from '@angular/forms';
 import { EasyUIModule } from 'ng-easyui/components/easyui/easyui.module';
 import { DateBoxModule } from 'ng-easyui/components/datebox/datebox.module';
 import {HashLocationStrategy , LocationStrategy} from '@angular/common';
+import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
   imports: [
     BrowserModule,
     CommonModule,
     HttpModule,
+    CookieModule.forRoot(),
     HttpClientModule,
     FormsModule,
     EasyUIModule,

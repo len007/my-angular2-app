@@ -2,6 +2,8 @@ import { Component, ElementRef, ViewChild, OnInit, AfterContentChecked } from '@
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router'
+import { CookieService } from 'ngx-cookie';
+
 import * as $ from 'jquery';
 @Component({
   selector: 'app-root',
@@ -9,7 +11,8 @@ import * as $ from 'jquery';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, AfterContentChecked {
-  isLogin: boolean = true;
+  userInfo: any = {};
+  isLogin: boolean = false;
   isLoging: boolean = true;
   userName: String = '';
   passWord: String = '';
@@ -27,7 +30,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
     maxPageNo: 0
   }
   items: Array<any>;
-  constructor(private http: Http, private httpC: HttpClient, private router: Router, private route: ActivatedRoute) {
+  constructor(private http: Http, private httpC: HttpClient, private cookie: CookieService) {
     let tt = new Date();
     this.selectDateTime = new Date(this.formatterDate2(tt));
     this.nowDate = new Date(this.formatterDate1(tt));
@@ -47,9 +50,9 @@ export class AppComponent implements OnInit, AfterContentChecked {
       this.httpC.post(loginUrl, params).subscribe(res => {
         let result = res;
         if (result['success']) {
+          this.userInfo = { isLogin: true, userName: this.userName };
+          this.cookie.putObject('_user', this.userInfo, { storeUnencoded: false });
           this.isLogin = true;
-          sessionStorage.setItem('isLogin', 'true');
-          sessionStorage.setItem('userName', this.userName.toString());
         } else {
           alert('账号验证失败！');
           this.passWord = '';
@@ -174,8 +177,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
   disLogin() { // 注销
     this.isLogin = false;
     this.userName = '';
-    sessionStorage.setItem('isLogin', 'false');
-    sessionStorage.setItem('userName', '');
+    this.cookie.removeAll();
   }
   showLoginModal() {
     if (!this.isLoging) {
@@ -194,9 +196,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.changeURL();
   }
   ngOnInit() {
-    this.isLogin = sessionStorage.getItem('isLogin') === 'true' ? true : false;
-    this.userName = sessionStorage.getItem('userName') ? sessionStorage.getItem('userName') : '';
-    if (this.isLogin) {
+    this.userInfo = this.cookie.getObject('_user');
+    if (this.userInfo && this.userInfo['isLogin'] && this.userInfo['userName']) {
+      this.isLogin = this.userInfo['isLogin'];
+      this.userName = this.userInfo['userName'];
       this.searchForTime()
     }
   }
