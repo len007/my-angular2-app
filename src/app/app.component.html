@@ -57,9 +57,8 @@
     <table class="my-table">
       <tr class="list-row-header">
         <td>手机号</td>
-        <td>年龄</td>
-        <td>城市</td>
         <td>业务主键</td>
+        <td>城市</td>
         <td>拨打结果</td>
         <td>信用卡</td>
         <td>还房贷</td>
@@ -71,12 +70,12 @@
         <td>是否是投保人</td>
         <td>月保费合计</td>
         <td>筛选备注</td>
+        <td>年龄</td>
       </tr>
       <tr class="font-size-14" *ngFor="let item of items;let i=index;" [ngClass]="{'list-row-single':i%2==0,'list-row-double':i%2==1}">
         <td>{{item?.contactInfo}}</td>
-        <td>{{item?.age}}</td>
-        <td>{{item?.city}}</td>
         <td>{{item?.businesskeyId}}</td>
+        <td>{{item?.city}}</td>
         <td>{{item?.visitResult}}</td>
         <td>{{item?.hasCreditCard}}</td>
         <td>{{item?.has_Mortgage}}</td>
@@ -88,6 +87,7 @@
         <td>{{item?.isApplication}}</td>
         <td>{{item?.monthInsuranceTotal}}</td>
         <td>{{item?.filterRemark}}</td>
+        <td>{{item?.age}}</td>
       </tr>
       <tr *ngIf="pages?.total === 0">
         <td colspan="15"><span class="no-data"></span></td>
