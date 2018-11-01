@@ -38,7 +38,7 @@
         [ngClass]="{ 'upload-btn-disabled':(selectDateTime>=nowDate)}">
     </div>
     <div class="div-group pull-right">
-      <input type="button" value="查询" class="common-btn" (click)="searchForTime()" title="需先选择日期" [disabled]="selectDateTime>=nowDate"
+      <input type="button" value="查询" class="common-btn" (click)="searchForTimeBefore()" title="需先选择日期" [disabled]="selectDateTime>=nowDate"
         [ngClass]="{ 'upload-btn-disabled':(selectDateTime>=nowDate)}">
     </div>
     <div class="div-group pull-right" title="只支持查询前一天的数据">
@@ -48,8 +48,9 @@
     <div class="clear-fix"></div>
     <div class="margin-top-10 font-size-14 pull-right">
       <a (click)="chagePageBefore()" class="pagination-btn" [ngClass]="{ 'disabled':(pages?.pageNo < 2)}">上一页</a>
-      <input [(ngModel)]="inputPageNo" type="input" (keyup.enter)="chagePages()" class="pagination-btn pagination-input">
+      <input [(ngModel)]="inputPageNo" type="number" (keyup.enter)="chagePages()" class="pagination-btn pagination-input" title="Enter键提交">
       <a class="icon-wrapper pagination-total" title="总页数">/&nbsp;{{pages?.maxPageNo}}</a>
+      <input value="跳转" type="button" (click)="chagePages()" class="pagination-btn pagination-input" style="cursor: pointer;">
       <a (click)="chagePageNext()" class="pagination-btn" [ngClass]="{ 'disabled':(pages?.pageNo>=pages?.maxPageNo)}">下一页</a>
     </div>
   </div>

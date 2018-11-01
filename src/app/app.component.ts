@@ -87,6 +87,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
     a.click();
     document.body.removeChild(a);
   }
+  searchForTimeBefore(){
+    this.inputPageNo = 1;
+    this.searchForTime();
+  }
   // 根据日期查询
   searchForTime() {
     if (this.selectDateTime >= this.nowDate) {
@@ -158,11 +162,15 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.searchForTime();
   }
   chagePages() {  // 跳转到固定页
+    if(this.inputPageNo === this.inputPageNo){
+      return;
+    }
     if (this.inputPageNo > 0 && this.inputPageNo <= this.pages.maxPageNo) {
       this.pages.pageNo = this.inputPageNo;
     } else {
       this.inputPageNo = this.pages.pageNo;
       alert('请输入有效页码！');
+      return;
     }
     this.searchForTime();
   }
@@ -189,10 +197,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
   ngOnInit() {
     this.userInfo = this.cookie.getObject('_user');
-    this.userInfo= {
-      isLogin:true,
-      userName:'len'
-    }
+    // this.userInfo= {
+    //   isLogin:true,
+    //   userName:'len'
+    // }
     if (this.userInfo && this.userInfo['isLogin'] && this.userInfo['userName']) {
       this.isLogin = this.userInfo['isLogin'];
       this.userName = this.userInfo['userName'];
