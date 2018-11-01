@@ -31,9 +31,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
   items: Array<any>;
   constructor(private http: Http, private httpC: HttpClient, private cookie: CookieService) {
-    let tt = new Date();
-    this.selectDateTime = new Date(this.formatterDate2(tt));
-    this.nowDate = new Date(this.formatterDate1(tt));
+    // let tt = new Date('2018/1/1');
+    // this.nowDate = new Date(tt.setHours(0, 0, 0, 0));
+    this.nowDate = new Date(new Date().setHours(0, 0, 0, 0));
+    this.selectDateTime = new Date(this.nowDate.getTime() - 24*60*60*1000);
   }
   stopPropagation(event) {
     event.stopPropagation();
@@ -63,18 +64,6 @@ export class AppComponent implements OnInit, AfterContentChecked {
     } else {
       alert('请输入账号和密码');
     }
-  }
-  formatterDate1(date) {
-    var y = date.getFullYear();
-    var m = date.getMonth() + 1;
-    var d = date.getDate();
-    return y + '/' + (m < 10 ? ('0' + m) : m) + '/' + (d < 10 ? ('0' + d) : d);
-  }
-  formatterDate2(date) {
-    var y = date.getFullYear();
-    var m = date.getMonth() + 1;
-    var d = date.getDate() - 1;
-    return y + '/' + (m < 10 ? ('0' + m) : m) + '/' + (d < 10 ? ('0' + d) : d);
   }
   formatterDate(date) {
     var y = date.getFullYear();
@@ -159,12 +148,14 @@ export class AppComponent implements OnInit, AfterContentChecked {
       this.pages.pageNo -= 1;
       this.inputPageNo = this.pages.pageNo;
     }
+    this.searchForTime();
   }
   chagePageNext() {  // 下一页
     if (this.pages.pageNo < this.pages.maxPageNo) {
       this.pages.pageNo += 1;
       this.inputPageNo = this.pages.pageNo;
     }
+    this.searchForTime();
   }
   chagePages() {  // 跳转到固定页
     if (this.inputPageNo > 0 && this.inputPageNo <= this.pages.maxPageNo) {
@@ -173,6 +164,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
       this.inputPageNo = this.pages.pageNo;
       alert('请输入有效页码！');
     }
+    this.searchForTime();
   }
   disLogin() { // 注销
     this.isLogin = false;
@@ -197,6 +189,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
   ngOnInit() {
     this.userInfo = this.cookie.getObject('_user');
+    this.userInfo= {
+      isLogin:true,
+      userName:'len'
+    }
     if (this.userInfo && this.userInfo['isLogin'] && this.userInfo['userName']) {
       this.isLogin = this.userInfo['isLogin'];
       this.userName = this.userInfo['userName'];
