@@ -162,7 +162,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.searchForTime();
   }
   chagePages() {  // 跳转到固定页
-    if(this.inputPageNo === this.inputPageNo){
+    if(this.inputPageNo === this.pages.pageNo){
       return;
     }
     if (this.inputPageNo > 0 && this.inputPageNo <= this.pages.maxPageNo) {
