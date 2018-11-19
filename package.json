@@ -24,6 +24,7 @@
     "ng-easyui": "^1.2.0",
     "ngx-cookie": "^4.0.2",
     "rxjs": "^6.0.0",
+    "wx-server-sdk": "0.0.25",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
