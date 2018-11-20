@@ -1,7 +1,7 @@
 <div style="background-color: rgb(234, 245, 255);">
   <div class="navigate-bar">
     <a class="pull-left icon-wrapper">
-      <span class="navbar-brand">普惠电销外呼自助查询系统</span>
+      <span class="navbar-brand">金服AI系统</span>
     </a>
     <a class="icon-wrapper">
       <span class="user-icon"></span>
@@ -32,69 +32,7 @@
           (click)="uploadFileAction()" [ngClass]="{ 'upload-btn-disabled':(!fileName||!uploadDataOneTimes)}">
       </form>
     </div>
-
-    <div class="pull-right">
-      <input type="button" value="下载" class="common-btn" (click)="downloadData()" title="需先选择日期" [disabled]="selectDateTime>=nowDate"
-        [ngClass]="{ 'upload-btn-disabled':(selectDateTime>=nowDate)}">
-    </div>
-    <div class="div-group pull-right">
-      <input type="button" value="查询" class="common-btn" (click)="searchForTimeBefore()" title="需先选择日期" [disabled]="selectDateTime>=nowDate"
-        [ngClass]="{ 'upload-btn-disabled':(selectDateTime>=nowDate)}">
-    </div>
-    <div class="div-group pull-right" title="只支持查询前一天的数据">
-      <eui-datebox [(ngModel)]="selectDateTime" format="yyyy-MM-dd"></eui-datebox>
-      <br />
-    </div>
-    <div class="clear-fix"></div>
-    <div class="margin-top-10 font-size-14 pull-right">
-      <a (click)="chagePageBefore()" class="pagination-btn" [ngClass]="{ 'disabled':(pages?.pageNo < 2)}">上一页</a>
-      <input [(ngModel)]="inputPageNo" type="number" (keyup.enter)="chagePages()" class="pagination-btn pagination-input" title="Enter键提交">
-      <a class="icon-wrapper pagination-total" title="总页数">/&nbsp;{{pages?.maxPageNo}}</a>
-      <input value="跳转" type="button" (click)="chagePages()" class="pagination-btn pagination-input" style="cursor: pointer;">
-      <a (click)="chagePageNext()" class="pagination-btn" [ngClass]="{ 'disabled':(pages?.pageNo>=pages?.maxPageNo)}">下一页</a>
-    </div>
   </div>
-  <section class="list-content">
-    <table class="my-table">
-      <tr class="list-row-header">
-        <td>手机号</td>
-        <td>业务主键</td>
-        <td>城市</td>
-        <td>拨打结果</td>
-        <td>信用卡</td>
-        <td>还房贷</td>
-        <td>还车贷</td>
-        <td>房产情况</td>
-        <td>居住时间</td>
-        <td>车</td>
-        <td>寿险保单</td>
-        <td>是否是投保人</td>
-        <td>月保费合计</td>
-        <td>筛选备注</td>
-        <td>年龄</td>
-      </tr>
-      <tr class="font-size-14" *ngFor="let item of items;let i=index;" [ngClass]="{'list-row-single':i%2==0,'list-row-double':i%2==1}">
-        <td>{{item?.contactInfo}}</td>
-        <td>{{item?.businesskeyId}}</td>
-        <td>{{item?.city}}</td>
-        <td>{{item?.visitResult}}</td>
-        <td>{{item?.hasCreditCard}}</td>
-        <td>{{item?.has_Mortgage}}</td>
-        <td>{{item?.hasCarLoan}}</td>
-        <td>{{item?.habitation}}</td>
-        <td>{{item?.residentPeriod}}</td>
-        <td>{{item?.isCar}}</td>
-        <td>{{item?.isLifeInserance}}</td>
-        <td>{{item?.isApplication}}</td>
-        <td>{{item?.monthInsuranceTotal}}</td>
-        <td>{{item?.filterRemark}}</td>
-        <td>{{item?.age}}</td>
-      </tr>
-      <tr *ngIf="pages?.total === 0">
-        <td colspan="15"><span class="no-data"></span></td>
-      </tr>
-    </table>
-  </section>
 </section>
 <div class="body-bg" *ngIf="!isLogin">
   <div class="modal" (click)="hideLoginModal()" *ngIf="isLoging">

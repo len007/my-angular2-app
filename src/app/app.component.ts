@@ -17,25 +17,13 @@ export class AppComponent implements OnInit, AfterContentChecked {
   userName: String = '';
   passWord: String = '';
   uploadDataOneTimes: boolean = true;
-  selectDateTime: Date;
-  nowDate: Date;
   fileName: String = '';
   @ViewChild('orginForm')
   orginForm: ElementRef;
-  inputPageNo: number = 1;
-  pages: any = {
-    pageSize: 10,
-    pageNo: 1,
-    total: 0,
-    maxPageNo: 0
-  }
+
+
   items: Array<any>;
-  constructor(private http: Http, private httpC: HttpClient, private cookie: CookieService) {
-    // let tt = new Date('2018/1/1');
-    // this.nowDate = new Date(tt.setHours(0, 0, 0, 0));
-    this.nowDate = new Date(new Date().setHours(0, 0, 0, 0));
-    this.selectDateTime = new Date(this.nowDate.getTime() - 24*60*60*1000);
-  }
+  constructor(private http: Http, private httpC: HttpClient, private cookie: CookieService) { }
   stopPropagation(event) {
     event.stopPropagation();
   }
@@ -65,60 +53,11 @@ export class AppComponent implements OnInit, AfterContentChecked {
       alert('请输入账号和密码');
     }
   }
-  formatterDate(date) {
-    var y = date.getFullYear();
-    var m = date.getMonth() + 1;
-    var d = date.getDate();
-    return y + '-' + (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
-  }
-  downloadData() {
-    if (this.selectDateTime >= this.nowDate) {
-      alert('不支持下载当天及以后的数据！');
-      return;
-    }
-    let downloadUrl = $('#downloadUrl').val();
-    let nowTime = this.formatterDate(this.selectDateTime);
-    downloadUrl = downloadUrl + "?nowTime=" + nowTime;
-    var a = document.createElement('a');
-    document.body.appendChild(a);
-    a.setAttribute('style', 'display:none');
-    a.setAttribute('href', downloadUrl);
-    a.setAttribute('download', 'data.csv');
-    a.click();
-    document.body.removeChild(a);
-  }
-  searchForTimeBefore(){
-    this.inputPageNo = 1;
-    this.searchForTime();
-  }
-  // 根据日期查询
-  searchForTime() {
-    if (this.selectDateTime >= this.nowDate) {
-      alert('不支持查询当天及以后的数据！');
-      return;
-    }
-    let nowTime = this.formatterDate(this.selectDateTime);
-    let searchUrl = $('#searchUrl').val();
-    let params = new HttpParams()
-      .set('nowTime', nowTime.toString())
-      .set('pageSize', this.pages.pageSize)
-      .set('pageNum', this.pages.pageNo);
-    this.httpC.post(searchUrl.toString(), params).subscribe(res => {
-      if (res['code'] === '1') {
-        let result = JSON.parse(res['msg']);
-        this.items = result['listPHData'] || {};
-        this.pages.total = result['countNum'] || 0;
-        this.getMaxPageNo();
-      } else {
-        alert('系统繁忙，请稍后再试！');
-      }
-    }, error => {
-      alert('系统繁忙，请稍后再试！');
-    });
-  }
+
   selectedFileOnChanged(event) {
     this.fileName = event.target.value;
   }
+
   uploadFileAction() {
     this.uploadDataOneTimes = false;
     let uploadUrl = $('#uploadUrl').val();
@@ -144,36 +83,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
       this.uploadDataOneTimes = true;
     });
   }
-  getMaxPageNo() {
-    this.pages.maxPageNo = Math.ceil(this.pages.total / this.pages.pageSize);
-  }
-  chagePageBefore() { // 上一页
-    if (this.pages.pageNo > 1) {
-      this.pages.pageNo -= 1;
-      this.inputPageNo = this.pages.pageNo;
-    }
-    this.searchForTime();
-  }
-  chagePageNext() {  // 下一页
-    if (this.pages.pageNo < this.pages.maxPageNo) {
-      this.pages.pageNo += 1;
-      this.inputPageNo = this.pages.pageNo;
-    }
-    this.searchForTime();
-  }
-  chagePages() {  // 跳转到固定页
-    if(this.inputPageNo === this.pages.pageNo){
-      return;
-    }
-    if (this.inputPageNo > 0 && this.inputPageNo <= this.pages.maxPageNo) {
-      this.pages.pageNo = this.inputPageNo;
-    } else {
-      this.inputPageNo = this.pages.pageNo;
-      alert('请输入有效页码！');
-      return;
-    }
-    this.searchForTime();
-  }
+  
   disLogin() { // 注销
     this.isLogin = false;
     this.userName = '';
@@ -197,14 +107,9 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
   ngOnInit() {
     this.userInfo = this.cookie.getObject('_user');
-    // this.userInfo= {
-    //   isLogin:true,
-    //   userName:'len'
-    // }
     if (this.userInfo && this.userInfo['isLogin'] && this.userInfo['userName']) {
       this.isLogin = this.userInfo['isLogin'];
       this.userName = this.userInfo['userName'];
-      this.searchForTime()
     }
   }
 }
