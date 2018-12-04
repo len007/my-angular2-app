@@ -107,6 +107,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
   ngOnInit() {
     this.userInfo = this.cookie.getObject('_user');
+    // this.userInfo ={
+    //   isLogin: true,
+    //   userName: 'Len'
+    // }
     if (this.userInfo && this.userInfo['isLogin'] && this.userInfo['userName']) {
       this.isLogin = this.userInfo['isLogin'];
       this.userName = this.userInfo['userName'];

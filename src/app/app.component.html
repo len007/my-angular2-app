@@ -20,18 +20,16 @@
 <!-- 试试 -->
 <section class="body-bg2" *ngIf="isLogin">
   <div class="search-bar">
-    <div class="div-group">
       <form id="orgin" #orginForm method="POST" enctype="multipart/form-data" name="orginForm" class="formStyle">
         <input type="" name="mark" value="1" style="display: none">
         <span class="common-btn fileinput-button">
-          选择
+          <span>选择</span>
           <input type="file" name="file" id="fileChooseBtn" required="required" (change)="selectedFileOnChanged($event)" />
         </span>
         <input id="showFileName" type="text" readonly placeholder="未选择文件..." [value]="fileName">
         <input type="button" value="上传" [disabled]="!fileName||!uploadDataOneTimes" id="submitOrgin" class="common-btn"
           (click)="uploadFileAction()" [ngClass]="{ 'upload-btn-disabled':(!fileName||!uploadDataOneTimes)}">
       </form>
-    </div>
   </div>
 </section>
 <div class="body-bg" *ngIf="!isLogin">
