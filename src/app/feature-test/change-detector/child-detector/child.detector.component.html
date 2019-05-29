@@ -1,6 +1,0 @@
-<h2 [innerHTML]="detectionH2"></h2>
-<a (click)="changeDections(true)" [ngClass]="{'current':isAuto}">定时刷新页面</a>
-<a (click)="changeDections(false)" [ngClass]="{'current':!isAuto}">手动刷新页面</a>
-<button (click)="freshData()" *ngIf="!isAuto">（手动刷新）</button>
-<div><label>检测-数字</label><input type="input" [value]="detectionInt"/></div>
-<div><label>检测-对象</label><input type="input" [value]="detectionObj?.score"/></div>

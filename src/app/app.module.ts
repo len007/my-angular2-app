@@ -1,39 +1,39 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
-import { SharedModule } from '../shared/shared.module';
-import { AppComponent } from './app.component';
-import { AppRouterModule } from './app-router.module';
-import { HeaderModule } from '../shared/component/header/header.module';
-import { LeftMenuModule } from '../shared/component/left-menu/leftmenu.module';
-import { HttpClientModule } from "@angular/common/http";
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
-import { ContactService } from '../shared/service/contact.service'
-import { LoggerService } from '../shared/service/logger.service';
-import { MessageService } from '../shared/service/message.service';
-import { urlHelpObservableService } from '../shared/service/urlHelpObservable.service';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from '../components/header/header.component';
+import { BroadsideComponent } from '../components/broadside/broadside.component';
+import { BroadcastService } from '../services/broadcast/broadcast.service';
+import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
+import { ScrollDirective } from '../directives/scroll.directive';
+import { FooterComponent } from '../components/footer/footer.component';
+
+// import { MyOwnCustomMaterialModule } from './material.module';
+
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HeaderModule,
-    LeftMenuModule,
-    HttpClientModule,
-    SharedModule.forChild(),
-    RouterModule.forRoot(AppRouterModule, { useHash: true })
-  ],
-  providers: [
-    ContactService,
-    LoggerService,
-    MessageService,
-    urlHelpObservableService,
-    // { provide: LocationStrategy, useClass: HashLocationStrategy }
-  ],
   declarations: [
     AppComponent,
+    BroadsideComponent,
+    HeaderComponent,
+    ScrollDirective,
+    FooterComponent,
   ],
-  bootstrap: [AppComponent],
+  imports: [
+    FormsModule,
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NgZorroAntdModule,
+  ],
+  providers: [BroadcastService, { provide: NZ_I18N, useValue: zh_CN }],
+  exports: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
